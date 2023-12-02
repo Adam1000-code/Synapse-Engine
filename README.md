@@ -1,2 +1,2 @@
 # Synapse-Engine
-An open source engine made in C++ and with SDL2
+An open source game engine made in C++ and with SDL2
