@@ -3,16 +3,18 @@
 #include <iostream>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
-#include "include/gameobject.hpp"
 #include "include/map.hpp"
+#include "include/ECS/components.hpp"
+#include "include/vector2D.hpp"
 
 using namespace std;
 
-GameObject* player;
-GameObject* enemy;
 Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
+
+Manager manager;
+auto& player(manager.addEntity());
 
 Game::Game()
 {
@@ -55,9 +57,10 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
         isRunning = false;
     }
 
-    player = new GameObject("assets/player.png", 0, 0, 31, 36);
-    enemy = new GameObject("assets/enemy.png", 50, 50, 31, 36);
     map = new Map();
+
+    player.addComponent<TransformComponent>(0, 100);
+    player.addComponent<SpriteComponent>("assets/player.png");
 }
 
 void Game::handleEvents()
@@ -78,19 +81,25 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    cnt++;
-    cout << cnt << endl;
-    player->Update();
-    enemy->Update();
-    map->DrawMap();
+    //cnt++;
+    //cout << cnt << endl;
+    manager.refresh();
+    manager.update();
+    player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0));
+
+    if(player.getComponent<TransformComponent>().position.x > 200)
+    {
+        player.getComponent<SpriteComponent>().setTex("assets/enemy.png");
+    }
+
+    //cout << player.getComponent<TransformComponent>().position.x << endl;
 }
 
 void Game::render()
 {
     SDL_RenderClear(renderer);
     map->DrawMap();
-    player->Render();
-    enemy->Render();
+    manager.draw();
     SDL_RenderPresent(renderer);
 }
 
