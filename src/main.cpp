@@ -1,3 +1,9 @@
+/**
+ * Synapse Engine
+ * 11/26/23
+ * Created by Adam1000
+ */
+
 #include "include/game.hpp"
 #include <iostream>
 
@@ -5,7 +11,8 @@ using namespace std;
 
 Game* game = nullptr;
 
-//float engineVer = 0.38;
+/** Engine version **/
+//float engineVer = 0.43;
 
 int main()
 {
