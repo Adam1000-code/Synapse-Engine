@@ -30,6 +30,7 @@ Game::~Game()
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {
+    #pragma region init window
     int flags = 0;
 
     if(fullscreen)
@@ -60,6 +61,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
     {
         isRunning = false;
     }
+    #pragma endregion
 
     map = new Map();
 
