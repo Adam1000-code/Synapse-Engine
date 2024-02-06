@@ -1,4 +1,4 @@
-/**
+/*
  * Synapse Engine
  * 11/26/23
  * Created by Adam1000
@@ -12,7 +12,7 @@ using namespace std;
 Game* game = nullptr;
 
 /** Engine version **/
-//float engineVer = 0.43;
+const float engineVer = 0.58;
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
     game = new Game();
 
     //cout << "Made with Synapse\n";
-    //cout << "Synapse Engine beta " << engineVer << ": Created by Adam1000\n";
+    cout << "Synapse Engine beta " << engineVer << ": Created by Adam1000\n";
 
     game->init("Synapse Engine", 800, 640, false);
 

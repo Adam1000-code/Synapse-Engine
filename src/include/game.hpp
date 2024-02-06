@@ -27,7 +27,7 @@ class Game
         static std::vector<ColliderComponent*> colliders;
     
     private:
-        int cnt = 0;
+        //int cnt = 0;
         bool isRunning;
         SDL_Window *window;
 };
