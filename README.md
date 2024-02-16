@@ -25,4 +25,5 @@ $ yum install SDL2-devel
 $ yum install SDL2_image-devel
 ```
 
-Next, download the latest release of the engine from the releases tab.
+Next, download the latest release of the engine's source code from the releases tab.
+Once you have the source code zip, unzip it using what ever you would normally use.
