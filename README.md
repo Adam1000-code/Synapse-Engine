@@ -8,7 +8,6 @@ Apt package manager:
 
 ```
 $ sudo apt-get install libsdl2-dev
-
 $ sudo apt-get install libsdl2-image-2.0-0-dev
 ```
 
@@ -16,7 +15,6 @@ DNF package manager:
 
 ```
 $ sudo dnf install SDL2-devel
-
 $ sudo dnf install SDL2_image-devel
 ```
 
@@ -24,6 +22,5 @@ Yum package manager:
 
 ```
 $ yum install SDL2-devel
-
 $ yum install SDL2_image-devel
 ```
