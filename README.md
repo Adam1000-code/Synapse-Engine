@@ -1,8 +1,8 @@
 # Synapse-Engine
-> The Synapse Engine is an open-source game engine written in C++ using SDL2 for graphics.
+The Synapse Engine is an open-source game engine written in C++ using SDL2 for graphics.
 
 ## Getting Started
-> Start off by installing SDL2 and SDL2_Image on your device
+Start off by installing SDL2 and SDL2_Image on your device
 
 Apt package manager:
 
