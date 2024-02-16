@@ -19,8 +19,8 @@ SDL_Event Game::event;
 
 vector<ColliderComponent*> Game::colliders;
 
-auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
+auto& player(manager.AddEntity());
+auto& wall(manager.AddEntity());
 
 enum groupLabels : size_t
 {
@@ -77,16 +77,16 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
     Map::LoadMap("assets/map_16x16.map", 16, 16);
 
-    player.addComponent<TransformComponent>(1);
-    player.addComponent<SpriteComponent>("assets/player.png");
-    player.addComponent<KeyboardController>();
-    player.addComponent<ColliderComponent>("player");
-    player.addGroup(groupPlayers);
+    player.AddComponent<TransformComponent>(1);
+    player.AddComponent<SpriteComponent>("assets/player.png");
+    player.AddComponent<KeyboardController>();
+    player.AddComponent<ColliderComponent>("player");
+    player.AddGroup(groupPlayers);
 
-    wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
-    wall.addComponent<SpriteComponent>("assets/dirt.png");
-    wall.addComponent<ColliderComponent>("wall");
-    wall.addGroup(groupMap);
+    wall.AddComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+    wall.AddComponent<SpriteComponent>("assets/dirt.png");
+    wall.AddComponent<ColliderComponent>("wall");
+    wall.AddGroup(groupMap);
 }
 
 void Game::handleEvents()
@@ -110,13 +110,13 @@ void Game::update()
 
     for(auto cc : colliders)
     {
-        Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
+        Collision::AABB(player.GetComponent<ColliderComponent>(), *cc);
     }
 }
 
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
+auto& tiles(manager.GetGroup(groupMap));
+auto& players(manager.GetGroup(groupPlayers));
+auto& enemies(manager.GetGroup(groupEnemies));
 
 void Game::render()
 {
@@ -147,7 +147,7 @@ void Game::clean()
 
 void Game::AddTile(int id, int x, int y)
 {
-    auto& tile(manager.addEntity());
-    tile.addComponent<TileComponent>(x, y, 32, 32, id);
-    tile.addGroup(groupMap);
+    auto& tile(manager.AddEntity());
+    tile.AddComponent<TileComponent>(x, y, 32, 32, id);
+    tile.AddGroup(groupMap);
 }

@@ -14,16 +14,16 @@ class Manager;
 using ComponentID = std::size_t;
 using Group = std::size_t;
 
-inline ComponentID getNewComponentTypeID()
+inline ComponentID GetNewComponentTypeID()
 {
     static ComponentID lastID = 0u;
     return lastID++;
 }
 
-template <typename T> inline ComponentID getComponentTypeID() noexcept
+template <typename T> inline ComponentID GetComponentTypeID() noexcept
 {
     static_assert(std::is_base_of<Component, T>::value, "");
-    static ComponentID typeID = getNewComponentTypeID();
+    static ComponentID typeID = GetNewComponentTypeID();
     return typeID;
 }
 
@@ -77,41 +77,41 @@ class Entity
             active = false;
         }
 
-        bool hasGroup(Group mGroup)
+        bool HasGroup(Group mGroup)
         {
             return groupBitset[mGroup];
         }
 
-        void addGroup(Group mGroup);
+        void AddGroup(Group mGroup);
 
-        void deleteGroup(Group mGroup)
+        void DeleteGroup(Group mGroup)
         {
             groupBitset[mGroup] = false;
         }
 
-        template <typename T> bool hasComponent()
+        template <typename T> bool HasComponent()
         {
-            return componentBitSet[getComponentTypeID<T>()];
+            return componentBitSet[GetComponentTypeID<T>()];
         }
 
         template <typename T, typename... TArgs>
-        T& addComponent(TArgs&&... MArgs)
+        T& AddComponent(TArgs&&... MArgs)
         {
             T* c(new T(std::forward<TArgs>(MArgs)...));
             c->entity = this;
 		    std::unique_ptr<Component>uPtr {c};
 		    components.emplace_back(std::move(uPtr));
 
-            componentArray[getComponentTypeID<T>()] = c;
-		    componentBitSet[getComponentTypeID<T>()] = true;
+            componentArray[GetComponentTypeID<T>()] = c;
+		    componentBitSet[GetComponentTypeID<T>()] = true;
 
 		    c->init();
 		    return *c;
         }
 
-        template<typename T> T& getComponent() const
+        template<typename T> T& GetComponent() const
 	    {
-            auto ptr(componentArray[getComponentTypeID<T>()]);
+            auto ptr(componentArray[GetComponentTypeID<T>()]);
             return *static_cast<T*>(ptr);
 	    }
 
@@ -153,7 +153,7 @@ class Manager
                     std::remove_if(std::begin(v), std::end(v),
                     [i](Entity* mEntity)
                     {
-                        return !mEntity->isActive() || !mEntity->hasGroup(i);
+                        return !mEntity->isActive() || !mEntity->HasGroup(i);
                     }),
                     std::end(v)
                 );
@@ -170,12 +170,12 @@ class Manager
             groupedEntities[mGroup].emplace_back(mEntity);
         }
 
-        std::vector<Entity*>& getGroup(Group mGroup)
+        std::vector<Entity*>& GetGroup(Group mGroup)
         {
             return groupedEntities[mGroup];
         }
 
-        Entity& addEntity()
+        Entity& AddEntity()
         {
             Entity *e = new Entity(*this);
             std::unique_ptr<Entity> uPtr {e};

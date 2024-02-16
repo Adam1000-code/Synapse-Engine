@@ -11,7 +11,7 @@ class KeyboardController : public Component
 
         void init() override
         {
-            transform = &entity->getComponent<TransformComponent>();
+            transform = &entity->GetComponent<TransformComponent>();
         }
 
         void update() override
