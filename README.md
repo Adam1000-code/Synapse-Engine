@@ -25,4 +25,4 @@ $ yum install SDL2-devel
 $ yum install SDL2_image-devel
 ```
 
-Next, download the latest release of the engine from [Releases].
+Next, download the latest release of the engine from the releases tab.
