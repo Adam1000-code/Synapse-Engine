@@ -8,8 +8,8 @@
 class TileComponent : public Component
 {
     public:
-        TransformComponent *transform;
-        SpriteComponent *sprite;
+        TransformComponent* transform;
+        SpriteComponent* sprite;
 
         SDL_Rect tileRect;
         int tileID;
