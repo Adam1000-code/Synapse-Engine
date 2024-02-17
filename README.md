@@ -25,6 +25,13 @@ $ yum install SDL2-devel
 $ yum install SDL2_image-devel
 ```
 
+HomeBrew (MacOS)
+
+```
+brew install sdl2
+brew install sdl2_image
+```
+
 ## Downloading The Engine
 
 Next, download the latest release of the engine's source code from the releases tab.
