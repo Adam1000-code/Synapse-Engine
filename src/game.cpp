@@ -12,7 +12,7 @@
 using namespace std;
 
 Manager manager;
-Map* map;
+Map* gameMap;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -73,7 +73,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
     }
     #pragma endregion Init Window
 
-    map = new Map();
+    gameMap = new Map();
 
     Map::LoadMap("assets/map_16x16.map", 16, 16);
 
