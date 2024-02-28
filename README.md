@@ -1,6 +1,6 @@
 # Synapse-Engine
 
-![Screenshot](synapselogo1.png)
+![Alt text](synapselogo1.png)
 
 The Synapse Engine is an open-source game engine written in C++ using SDL2 for graphics.
 
