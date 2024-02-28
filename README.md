@@ -2,8 +2,14 @@
 
 The Synapse Engine is an open-source game engine written in C++ using SDL2 for graphics.
 
+## Recent Updates
+Beta 0.58 adds sprite animation, layers and also makes a small syntax change to the ECS(Entity Component System).
+
+## Small Reminder
+Currently, all of the releases are labeled as pre-releases because the engine is still in beta. so please remember that they're unstable versions of the engine and there's a chance that there's bugs in the code.
+
 ## Getting Started
-To use the engine, you must be using MacOS or Linux, this doesn't work with Windows(sorry windows users). In addition, you must have either the GCC/G++ or Clang/Clang++ installed on your device, If you're using MacOS, then Xcode and HomeBrew must be installed on your device. Once you have these dependencies installed and working, you're ready to go! Start off by installing SDL2 and SDL2_Image on your device.
+To use the engine, you must be using MacOS or Linux, this doesn't work with Windows(sorry windows users). In addition, you must have either the GCC/G++ or Clang/Clang++ installed on your device, If you're using MacOS, then Xcode and HomeBrew must be installed on your device. Once you have these dependencies installed and working, you're ready to move onto the next step. Start off by installing SDL2 and SDL2_Image on your device.
 
 Apt package manager:
 
