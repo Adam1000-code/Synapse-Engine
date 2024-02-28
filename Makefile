@@ -6,10 +6,10 @@ LIBS_MACOS = -I/usr/local/include -L/usr/local/lib -lSDL2 -framework OpenGL -lSD
 SRC_DIR = src
 BUILD_DIR = build
 
+EXECUTABLE = demo_synapse
+
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
-
-EXECUTABLE = demo_synapse.out
 
 ifeq ($(shell uname), Darwin)
     LIBS = $(LIBS_MACOS)
@@ -27,6 +27,7 @@ $(EXECUTABLE): $(OBJS)
 
 clean:
 	rm -f $(BUILD_DIR)/*.o
-	rm -f *.out
+	rm -f $(EXECUTABLE)
+#	rm -f *.out
 
 .PHONY: all clean
