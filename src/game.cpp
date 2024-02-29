@@ -12,7 +12,7 @@
 using namespace std;
 
 Manager manager;
-Map* gameMap;
+Map* mapManager;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -21,6 +21,8 @@ vector<ColliderComponent*> Game::colliders;
 
 auto& player(manager.AddEntity());
 auto& wall(manager.AddEntity());
+
+const char* mapfile = "assets/terrain_ss.png";
 
 enum groupLabels : size_t
 {
@@ -73,20 +75,16 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
     }
     #pragma endregion Init Window
 
-    gameMap = new Map();
+    mapManager = new Map();
 
-    Map::LoadMap("assets/map_16x16.map", 16, 16);
+    // there is a bug with the map loading
+    Map::LoadMap("assets/map.map", 25, 20);
 
     player.AddComponent<TransformComponent>(1);
-    player.AddComponent<SpriteComponent>("assets/player.png");
+    player.AddComponent<SpriteComponent>("assets/player_anims.png", true);
     player.AddComponent<KeyboardController>();
     player.AddComponent<ColliderComponent>("player");
     player.AddGroup(groupPlayers);
-
-    wall.AddComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
-    wall.AddComponent<SpriteComponent>("assets/dirt.png");
-    wall.AddComponent<ColliderComponent>("wall");
-    wall.AddGroup(groupMap);
 }
 
 void Game::handleEvents()
@@ -145,9 +143,9 @@ void Game::clean()
     //cout << "Game cleaned\n";
 }
 
-void Game::AddTile(int id, int x, int y)
+void Game::AddTile(int srcX, int srcY, int xpos, int ypos)
 {
     auto& tile(manager.AddEntity());
-    tile.AddComponent<TileComponent>(x, y, 32, 32, id);
+    tile.AddComponent<TileComponent>(srcX, srcY, xpos, ypos, mapfile);
     tile.AddGroup(groupMap);
 }

@@ -99,7 +99,7 @@ class Entity
         {
             T* c(new T(std::forward<TArgs>(MArgs)...));
             c->entity = this;
-		    std::unique_ptr<Component>uPtr {c};
+		    std::unique_ptr<Component>uPtr { c };
 		    components.emplace_back(std::move(uPtr));
 
             componentArray[GetComponentTypeID<T>()] = c;
