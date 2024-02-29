@@ -12,7 +12,7 @@ using namespace std;
 Game* game = nullptr;
 
 /** Engine version **/
-const float engineVer = 0.58;
+const float engineVer = 0.65;
 
 int main()
 {

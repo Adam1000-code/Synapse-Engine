@@ -29,5 +29,5 @@ class Game
     private:
         //int cnt = 0;
         bool isRunning;
-        SDL_Window *window;
+        SDL_Window* window;
 };
