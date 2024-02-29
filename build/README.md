@@ -1,1 +1,1 @@
-This is the build directory. do not delete this folder
+This is the build directory. Do not delete this folder, it is important for compiling.
