@@ -78,10 +78,10 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
     mapManager = new Map();
 
     // there is a bug with the map loading
-    Map::LoadMap("assets/map.map", 25, 20);
+    Map::LoadMap("assets/map.map", 20, 25);
 
     player.AddComponent<TransformComponent>(1);
-    player.AddComponent<SpriteComponent>("assets/player_anims.png", true);
+    player.AddComponent<SpriteComponent>("assets/player.png");
     player.AddComponent<KeyboardController>();
     player.AddComponent<ColliderComponent>("player");
     player.AddGroup(groupPlayers);
