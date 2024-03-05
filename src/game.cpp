@@ -22,7 +22,7 @@ vector<ColliderComponent*> Game::colliders;
 auto& player(manager.AddEntity());
 auto& wall(manager.AddEntity());
 
-const char* mapfile = "assets/terrain_ss.png";
+const char* mapTexture = "assets/terrain_ss.png";
 
 enum groupLabels : size_t
 {
@@ -146,6 +146,6 @@ void Game::clean()
 void Game::AddTile(int srcX, int srcY, int xpos, int ypos)
 {
     auto& tile(manager.AddEntity());
-    tile.AddComponent<TileComponent>(srcX, srcY, xpos, ypos, mapfile);
+    tile.AddComponent<TileComponent>(srcX, srcY, xpos, ypos, mapTexture);
     tile.AddGroup(groupMap);
 }
