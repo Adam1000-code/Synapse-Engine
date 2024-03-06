@@ -6,7 +6,9 @@ struct Animation
     int frames;
     int speed;
 
-    Animation() {}
+    Animation()
+    {
+    }
     
     Animation(int i, int f, int s)
     {
