@@ -2,7 +2,6 @@
 #include "include/texturemanager.hpp"
 #include "include/game.hpp"
 #include <fstream>
-#include <sstream>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -15,10 +14,10 @@ Map::~Map()
 {
 }
 
-void Map::LoadMap(std::string path, int sizeX, int sizeY)
+void Map::LoadMap(const char* path, int sizeX, int sizeY)
 {
-    std::fstream mapFile;
     char tile;
+    std::fstream mapFile; 
     int srcX, srcY;
 
     mapFile.open(path);
@@ -27,12 +26,21 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
     {
         for(int x = 0; x < sizeX; x++)
         {
-            mapFile.get(tile);
-            srcY = atoi(&tile) * 32;
-            mapFile.get();
-            srcX = atoi(&tile) * 32;
+            int tileValue;
+            mapFile >> tileValue;
+
+            if(tileValue >= 10)
+            {
+                srcY = (tileValue / 10) * 32;
+                srcX = (tileValue % 10) * 32;
+            }
+            else
+            {
+                srcY = 0;
+                srcX = tileValue * 32;
+            }
+
             Game::AddTile(srcX, srcY, x * 64, y * 64);
-            mapFile.ignore();
         }
     }
 

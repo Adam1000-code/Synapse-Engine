@@ -78,7 +78,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
     mapManager = new Map();
 
     // there is a bug with the map loading
-    Map::LoadMap("assets/map.map", 20, 25);
+    Map::LoadMap("assets/map.txt", 20, 25);
 
     player.AddComponent<TransformComponent>(1);
     player.AddComponent<SpriteComponent>("assets/player.png");
