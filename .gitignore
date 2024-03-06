@@ -31,3 +31,6 @@
 *.exe
 *.out
 *.app
+
+# Put your app name here
+demo_synapse
