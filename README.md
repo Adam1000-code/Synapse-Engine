@@ -2,7 +2,7 @@
 
 <!-- ![](assets/synapselogo2.png) -->
 
-The Synapse Engine is an open-source game engine written in C++ using SDL2 as it's core graphics library.
+The Synapse Engine is an open-source game engine written in C++ using SDL2 as it's core graphics library. Default assets made by @CarlBirch from the BirchEngine
 
 ## Recent Updates
 Beta 0.58 adds sprite animation, layers and also makes a small syntax change to the ECS(Entity Component System).
