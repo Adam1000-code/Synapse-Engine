@@ -1,5 +1,7 @@
 # <!-- ![](assets/synapselogo2.png) -->Synapse Engine
 
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+
 <!-- ![](assets/synapselogo2.png) -->
 
 The Synapse Engine is an open-source game engine written in C++ using SDL2 as it's core graphics library. Default assets made by @CarlBirch from the BirchEngine
