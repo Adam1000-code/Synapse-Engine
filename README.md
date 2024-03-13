@@ -37,8 +37,8 @@ $ yum install SDL2_image-devel
 HomeBrew (MacOS)
 
 ```
-brew install sdl2
-brew install sdl2_image
+$ brew install sdl2
+$ brew install sdl2_image
 ```
 
 ## Downloading The Engine
