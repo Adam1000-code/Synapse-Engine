@@ -4,6 +4,7 @@
 #include "ECS.hpp"
 #include "components.hpp"
 
+/* This is for all of your controls' keybinds. Set and define them here */
 class KeyboardController : public Component
 {
     public:
@@ -65,6 +66,8 @@ class KeyboardController : public Component
                         transform->velocity.y = 0;
                         sprite->Play("Idle");
                         break;
+                    case SDLK_ESCAPE:
+                        Game::isRunning = false;
                     default:
                         break;
                 }

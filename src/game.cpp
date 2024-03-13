@@ -22,6 +22,8 @@ vector<ColliderComponent*> Game::colliders;
 auto& player(manager.AddEntity());
 auto& wall(manager.AddEntity());
 
+bool Game::isRunning = false;
+
 const char* mapTexture = "assets/terrain_ss.png";
 
 enum groupLabels : size_t
@@ -31,6 +33,10 @@ enum groupLabels : size_t
     groupEnemies,
     groupColliders
 };
+
+auto& tiles(manager.GetGroup(groupMap));
+auto& players(manager.GetGroup(groupPlayers));
+auto& enemies(manager.GetGroup(groupEnemies));
 
 Game::Game()
 {
@@ -77,11 +83,10 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
     mapManager = new Map();
 
-    // there is a bug with the map loading
     mapManager->LoadMap("assets/map.map", 20, 25);
 
     player.AddComponent<TransformComponent>(1);
-    player.AddComponent<SpriteComponent>("assets/player.png");
+    player.AddComponent<SpriteComponent>("assets/player_anims.png", true);
     player.AddComponent<KeyboardController>();
     player.AddComponent<ColliderComponent>("player");
     player.AddGroup(groupPlayers);
@@ -106,15 +111,15 @@ void Game::update()
     manager.update();
     manager.refresh();
 
-    for(auto cc : colliders)
+    Vector2D playerVelocity = player.GetComponent<TransformComponent>().velocity;
+    int playerSpeed = player.GetComponent<TransformComponent>().speed;
+
+    for(auto t : tiles)
     {
-        Collision::AABB(player.GetComponent<ColliderComponent>(), *cc);
+        t->GetComponent<TileComponent>().destRect.x += -(playerVelocity.x * playerSpeed);
+        t->GetComponent<TileComponent>().destRect.y += -(playerVelocity.y * playerSpeed);
     }
 }
-
-auto& tiles(manager.GetGroup(groupMap));
-auto& players(manager.GetGroup(groupPlayers));
-auto& enemies(manager.GetGroup(groupEnemies));
 
 void Game::render()
 {
