@@ -2,6 +2,9 @@
 #include "include/texturemanager.hpp"
 #include "include/game.hpp"
 #include <fstream>
+#include <sstream>
+#include <vector>
+#include <string>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -14,35 +17,41 @@ Map::~Map()
 {
 }
 
-void Map::LoadMap(const char* path, int sizeX, int sizeY)
+void Map::LoadMap(std::string path, int sizeX, int sizeY)
 {
-    char tile;
-    std::fstream mapFile; 
-    int srcX, srcY;
+    std::ifstream mapFile(path);
+    std::string line;
+    std::vector<std::vector<int>> mapData;
 
-    mapFile.open(path);
+    while(std::getline(mapFile, line))
+    {
+        std::istringstream ss(line);
+        std::vector<int> row;
+        std::string value;
+
+        while(std::getline(ss, value, ','))
+        {
+            row.push_back(std::stoi(value));
+        }
+
+        mapData.push_back(row);
+    }
 
     for(int y = 0; y < sizeY; y++)
     {
         for(int x = 0; x < sizeX; x++)
         {
-            int tileValue;
-            mapFile >> tileValue;
-
-            if(tileValue >= 10)
+            if(y < mapData.size() && x < mapData[y].size())
             {
-                srcY = (tileValue / 10) * 32;
-                srcX = (tileValue % 10) * 32;
+                int tileCode = mapData[y][x];
+                int srcX = tileCode % 10;
+                int srcY = tileCode / 10;
+                Game::AddTile(srcX * 32, srcY * 32, x * 64, y * 64);
             }
-            else
+            /*else
             {
-                srcY = 0;
-                srcX = tileValue * 32;
-            }
-
-            Game::AddTile(srcX, srcY, x * 64, y * 64);
+                std::cout << "Warning: Insufficient data for tile at (" << x << ", " << y << ")" << std::endl;
+            }*/
         }
     }
-
-    mapFile.close();
 }
