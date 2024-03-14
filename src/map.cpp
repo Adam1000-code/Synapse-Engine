@@ -37,6 +37,9 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
         mapData.push_back(row);
     }
 
+    sizeY = mapData.size();
+    sizeX = (sizeY > 0) ? mapData[0].size() : 0;
+
     for(int y = 0; y < sizeY; y++)
     {
         for(int x = 0; x < sizeX; x++)
