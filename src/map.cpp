@@ -48,10 +48,10 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY)
                 int srcY = tileCode / 10;
                 Game::AddTile(srcX * 32, srcY * 32, x * 64, y * 64);
             }
-            /*else
+            else
             {
                 std::cout << "Warning: Insufficient data for tile at (" << x << ", " << y << ")" << std::endl;
-            }*/
+            }
         }
     }
 }
