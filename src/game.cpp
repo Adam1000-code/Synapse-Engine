@@ -17,6 +17,8 @@ Map* mapManager;
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
+SDL_Rect Game::camera = { 0, 0, 800, 640 };
+
 vector<ColliderComponent*> Game::colliders;
 
 auto& player(manager.AddEntity());
@@ -85,7 +87,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
     mapManager->LoadMap("assets/map.map", 20, 25);
 
-    player.AddComponent<TransformComponent>(1);
+    player.AddComponent<TransformComponent>(3);
     player.AddComponent<SpriteComponent>("assets/player_anims.png", true);
     player.AddComponent<KeyboardController>();
     player.AddComponent<ColliderComponent>("player");
@@ -111,13 +113,36 @@ void Game::update()
     manager.update();
     manager.refresh();
 
-    Vector2D playerVelocity = player.GetComponent<TransformComponent>().velocity;
+    /*Vector2D playerVelocity = player.GetComponent<TransformComponent>().velocity;
     int playerSpeed = player.GetComponent<TransformComponent>().speed;
 
     for(auto t : tiles)
     {
         t->GetComponent<TileComponent>().destRect.x += -(playerVelocity.x * playerSpeed);
         t->GetComponent<TileComponent>().destRect.y += -(playerVelocity.y * playerSpeed);
+    }*/
+
+    camera.x = player.GetComponent<TransformComponent>().position.x - 400;
+    camera.y = player.GetComponent<TransformComponent>().position.y - 320;
+
+    if(camera.x < 0)
+    {
+        camera.x = 0;
+    }
+
+    if(camera.y < 0)
+    {
+        camera.y = 0;
+    }
+
+    if(camera.x > camera.w)
+    {
+        camera.x = camera.w;
+    }
+
+    if(camera.y > camera.h)
+    {
+        camera.y = camera.h;
     }
 }
 
