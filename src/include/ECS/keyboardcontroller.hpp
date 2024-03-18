@@ -4,7 +4,7 @@
 #include "ECS.hpp"
 #include "components.hpp"
 
-/* This is for all of your controls' keybinds. Set and define them here */
+/** This is for all of your controls and keybinds. Set/define them here **/
 class KeyboardController : public Component
 {
     public:
