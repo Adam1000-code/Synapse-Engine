@@ -1,7 +1,6 @@
 /*
  * Synapse Engine
- * 11/26/23
- * Created by Adam1000
+ * Created on 11/26/23, by Adam1000
  */
 
 #include "include/game.hpp"
