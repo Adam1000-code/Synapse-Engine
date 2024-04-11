@@ -7,6 +7,8 @@ The Synapse Engine is an open-source game engine written in C++ using SDL2 as it
 ## Announcements
 3/4/2024: The engine is going to be overhauled soon. Is there a reason I'm doing this? Yes. It's very limited, it can only be used to make RPG style games, and it just didn't really live up to my expectations. I'm hoping that the overhaul makes it function the way I want to and makes it easier for new game developers to use.
 
+11/4/2024: The engine's overhaul has begun and I'm actively changing it. As of now, I've finished the rendering and texture manager for it, and I'm going to begin working on the movement code for transformations and vectors.
+
 ## Recent Updates
 Beta 0.58 adds sprite animation, layers and also makes a small syntax change to the ECS(Entity Component System).
 
