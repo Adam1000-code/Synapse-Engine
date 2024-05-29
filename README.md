@@ -5,13 +5,20 @@
 The Synapse Engine is an open-source game engine written in C++ using SDL2 as it's core graphics library.<!-- Default assets made by @CarlBirch from the BirchEngine -->
 
 ## Announcements
-3/4/2024: The engine is going to be overhauled soon. Is there a reason I'm doing this? Yes. It's very limited, it can only be used to make RPG style games, and it just didn't really live up to my expectations. I'm hoping that the overhaul makes it function the way I want to and makes it easier for new game developers to use.
+### 3/4/2024:
+The engine is going to be overhauled soon. Is there a reason I'm doing this? Yes. It's very limited, it can only be used to make RPG style games, and it just didn't really live up to my expectations. I'm hoping that the overhaul makes it function the way I want to and makes it easier for new game developers to use.
 
-11/4/2024: The engine's overhaul has begun and I'm actively changing it. As of now, I've finished the rendering and texture manager for it, and I'm going to begin working on the movement code for transformations and vectors.
+### 11/4/2024:
+The engine's overhaul has begun and I'm actively changing it. As of now, I've finished the rendering and texture manager for it, and I'm going to begin working on the movement code for transformations and vectors.
 
-1/5/2024: I'm working on a little sample game that comes with the engine to show how it works and what basic game could look like in it. As of now, I've finished the physics components and the very untrustworthy looking game object system. Last thing, I don't feel comfortable commiting the changes yet, I just don't think it's ready yet.
+### 1/5/2024:
+I'm working on a little sample game that comes with the engine to show how it works and what basic game could look like in it. As of now, I've finished the physics components and the very untrustworthy looking game object system. Last thing, I don't feel comfortable commiting the changes yet, I just don't think it's ready yet.
 
-5/6/2024: I've finished the RigidBody and I'm working on the input system. I fixed up the game object system and it should be fully functional now. I'm gonna push the overhaul after I finish the demo game.
+### 5/6/2024:
+I've finished the RigidBody and I'm working on the input system. I fixed up the game object system and it should be fully functional now. I'm gonna push the overhaul after I finish the demo game.
+
+### 5/29/2024:
+I apologize for the lack of progress lately. I've been working on an entirely different project related to this one. As of now I'm getting the map parser to work with TinyXML.
 
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
