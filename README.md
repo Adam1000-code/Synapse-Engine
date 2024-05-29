@@ -18,7 +18,7 @@ I'm working on a little sample game that comes with the engine to show how it wo
 I've finished the RigidBody and I'm working on the input system. I fixed up the game object system and it should be fully functional now. I'm gonna push the overhaul after I finish the demo game.
 
 ### 5/29/2024:
-I apologize for the lack of progress lately. I've been working on an entirely different project related to this one. As of now I'm getting the map parser to work with TinyXML.
+I apologize for the lack of progress lately. I've been working on an entirely different project related to this one. As of now I'm getting the map parser to work with TinyXML. In addition to that, I'm also preparing to push all the overhauled code by removing and changing things like the .gitignore and makefile.
 
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
