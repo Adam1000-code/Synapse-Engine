@@ -8,7 +8,7 @@ BUILD_DIR = build
 
 EXECUTABLE = demo_synapse
 
-SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+SRCS = $(shell find $(SRC_DIR) -name '*.cpp')
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 ifeq ($(shell uname), Darwin)
@@ -20,14 +20,14 @@ endif
 all: $(EXECUTABLE)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(EXECUTABLE): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)
 
 clean:
-	rm -f $(BUILD_DIR)/*.o
+	rm -rf $(BUILD_DIR)
 	rm -f $(EXECUTABLE)
-#	rm -f *.out
 
 .PHONY: all clean
