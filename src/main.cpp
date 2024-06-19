@@ -1,49 +1,34 @@
 /*
  * Synapse Engine
  * Created on 11/26/23, by Adam1000
+ * Overhaul began on 4/8/24
  */
 
-#include "include/game.hpp"
 #include <iostream>
+#include <SDL2/SDL.h>
+#include "core/engine.hpp"
+#include "time/timer.hpp"
 
 using namespace std;
 
-Game* game = nullptr;
-
 /** Engine version **/
-const float engineVer = 0.65;
+const float engineVer = 1.03;
 
 int main()
 {
-    const int FPS = 50;
-    const int frameDelay = 1000 / FPS;
+    cout << "Synapse Engine Overhaul: Version " << engineVer << ", Created by Adam1000" << endl;
+    
+    Engine::GetInstance()->Init("Synapse Engine", 960, 640);
 
-    Uint32 frameStart;
-    int frameTime;
-
-    game = new Game();
-
-    //cout << "Made with Synapse\n";
-    cout << "Synapse Engine beta " << engineVer << ": Created by Adam1000\n";
-
-    game->init("Synapse Engine", 800, 640, false);
-
-    while(game->running())
+    while(Engine::GetInstance()->isRunning())
     {
-        frameStart = SDL_GetTicks();
-
-        game->handleEvents();
-        game->update();
-        game->render();
-
-        frameTime = SDL_GetTicks() - frameStart;
-
-        if(frameDelay > frameTime)
-        {
-            SDL_Delay(frameDelay - frameTime);
-        }
+        Engine::GetInstance()->Events();
+        Engine::GetInstance()->Update();
+        Engine::GetInstance()->Render();
+        Timer::GetInstance()->Tick();
     }
-    game->clean();
+
+    Engine::GetInstance()->Clean();
 
     return 0;
 }
