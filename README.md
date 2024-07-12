@@ -20,6 +20,9 @@ I've finished the RigidBody and I'm working on the input system. I fixed up the 
 ### 5/29/2024:
 I apologize for the lack of progress lately. I've been working on an entirely different project related to this one. As of now I'm getting the map parser to work with TinyXML. In addition to that, I'm also preparing to push all the overhauled code by removing and changing things like the .gitignore and makefile.
 
+### 7/11/2024:
+I'm slowly pushing the changes onto github, and it will be a while before I can work on this project again.
+
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
 
