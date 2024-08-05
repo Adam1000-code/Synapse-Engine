@@ -1,4 +1,4 @@
-# <!-- ![](assets/synapselogo2.png) -->Synapse Engine
+# ![](assets/synapselogo2.png)<!-- Synapse Engine -->
 
 <!-- ![](assets/synapselogo2.png) -->
 
