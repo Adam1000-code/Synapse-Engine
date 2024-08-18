@@ -36,7 +36,7 @@ Apt package manager:
 
 ```
 $ sudo apt-get install libsdl2-dev
-$ sudo apt-get install libsdl2-image-2.0-0-dev
+$ sudo apt install libsdl2-image-dev
 ```
 
 DNF package manager:
