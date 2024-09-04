@@ -20,6 +20,7 @@ class TextureManager
         bool Load(string id, string filename);
         void Draw(string id, int x, int y, int width, int height, SDL_RendererFlip flip);
         void DrawFrame(string id, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip);
+        void DrawTile(string tilesetID, int tilesize, int x, int y, int row, int frame, SDL_RendererFlip flip);
         void Drop(string id);
         void Clean();
 
