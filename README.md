@@ -35,7 +35,7 @@ To use the engine, you must be using MacOS or Linux, this doesn't work with Wind
 Apt package manager:
 
 ```
-$ sudo apt-get install libsdl2-dev
+$ sudo apt install libsdl2-dev
 $ sudo apt install libsdl2-image-dev
 ```
 
