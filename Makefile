@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -Wextra -std=c++11
+CFLAGS = -Wall -Wextra -std=c++11 -g
 LIBS_LINUX = $(shell pkg-config --libs sdl2) -lGL -lSDL2_image
 LIBS_MACOS = -I/usr/local/include -L/usr/local/lib -lSDL2 -framework OpenGL -lSDL2_image
 
