@@ -48,9 +48,9 @@ void TextureManager::DrawFrame(string id, int x, int y, int width, int height, i
 
 void TextureManager::DrawTile(string tilesetID, int tilesize, int x, int y, int row, int frame, SDL_RendererFlip flip)
 {
-    SDL_Rect srcRect = {x, y, tilesize, tilesize};
-    SDL_Rect datRect = {tilesize * frame, tilesize * (row - 1), tilesize, tilesize};
-    SDL_RenderCopyEx(Engine::GetInstance()->GetRenderer(), m_textureMap[tilesetID], &srcRect, &datRect, 0, nullptr, flip);
+    SDL_Rect datRect = {x, y, tilesize, tilesize};
+    SDL_Rect srcRect = {tilesize * frame, tilesize * (row - 1), tilesize, tilesize};
+    SDL_RenderCopyEx(Engine::GetInstance()->GetRenderer(), m_textureMap[tilesetID], &srcRect, &datRect, 0, 0, flip);
 }
 
 void TextureManager::Drop(string id)
