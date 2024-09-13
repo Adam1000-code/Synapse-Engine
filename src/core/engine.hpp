@@ -2,6 +2,7 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "../map/gamemap.hpp"
 
 class Engine
 {
@@ -33,6 +34,7 @@ class Engine
     
     private:
         bool m_isRunning;
+        GameMap* m_levelMap;
         SDL_Window* m_window;
         SDL_Renderer* m_renderer;
         static Engine* s_instance;

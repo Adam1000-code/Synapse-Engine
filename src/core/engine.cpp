@@ -8,13 +8,14 @@
 #include "../object/gameobject.hpp"
 #include "../input/input.hpp"
 #include "../time/timer.hpp"
+#include "../map/mapparser.hpp"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
 Engine* Engine::s_instance = nullptr;
-Player* player;
+Player* player = nullptr;
 
 Engine::Engine()
 {
@@ -41,6 +42,14 @@ bool Engine::Init(const char* title, int width, int height)
         SDL_Log("ERROR: Failed to create renderer: %s", SDL_GetError());
     }
 
+    /*if(!MapParser::GetInstance()->Load())
+    {
+        cerr << "ERROR: Failed to load map" << endl;
+        return false;
+    }*/
+
+    //m_levelMap = MapParser::GetInstance()->GetMap("level1");
+
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
     TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
     TextureManager::GetInstance()->Load("player_run", "assets/Run (32x32).png");
@@ -55,6 +64,7 @@ bool Engine::Init(const char* title, int width, int height)
 void Engine::Update()
 {
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
+    //m_levelMap->Update();
     player->Update(deltaTime);
 }
 
@@ -64,6 +74,8 @@ void Engine::Render()
     SDL_RenderClear(m_renderer);
 
     //TextureManager::GetInstance()->Draw("logo1", 0, 0, 110, 100, SDL_FLIP_NONE);
+
+    //m_levelMap->Render();
     player->Draw();
     SDL_RenderPresent(m_renderer);
 }
