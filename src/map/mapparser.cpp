@@ -7,7 +7,7 @@ MapParser* MapParser::s_instance = nullptr;
 
 bool MapParser::Load()
 {
-    return Parse("level1", "assets/engineMap1.tmx");
+    return Parse("level1", "assets/engineMap.tmx");
 }
 
 bool MapParser::Parse(string id, string source)
@@ -56,7 +56,7 @@ bool MapParser::Parse(string id, string source)
 
 Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
 {
-    Tileset tileset;
+    /*Tileset tileset;
     tileset.name = xmlTileset->Attribute("name");
     xmlTileset->Attribute("firstgid", &tileset.firstID);
     xmlTileset->Attribute("tilecount", &tileset.tileCount);
@@ -68,6 +68,84 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
 
     TiXmlElement* image = xmlTileset->FirstChildElement();
     tileset.source = image->Attribute("source");
+    return tileset;*/
+
+    Tileset tileset;
+
+    if(xmlTileset->Attribute("name")) 
+    {
+        tileset.name = xmlTileset->Attribute("name");
+    } 
+    else 
+    {
+        cerr << "ERROR: Tileset missing 'name' attribute." << endl;
+        return Tileset();
+    }
+
+    if(xmlTileset->Attribute("firstgid", &tileset.firstID)) 
+    {
+        tileset.firstID = atoi(xmlTileset->Attribute("firstgid"));
+    } 
+    else 
+    {
+        cerr << "ERROR: Tileset missing 'firstgid' attribute." << endl;
+        return Tileset();
+    }
+
+    TiXmlElement* imageElement = xmlTileset->FirstChildElement("image");
+
+    if(imageElement && imageElement->Attribute("source")) 
+    {
+        tileset.source = imageElement->Attribute("source");
+    } 
+    else 
+    {
+        cerr << "ERROR: Tileset image missing 'source' attribute." << endl;
+        return Tileset();
+    }
+
+    if(xmlTileset->Attribute("tilewidth", &tileset.tileSize)) 
+    {
+        tileset.tileSize = atoi(xmlTileset->Attribute("tilewidth"));
+    } 
+    else 
+    {
+        cerr << "ERROR: Tileset missing 'tilewidth' attribute." << endl;
+        return Tileset();
+    }
+
+    if(xmlTileset->Attribute("tileheight", &tileset.tileSize)) 
+    {
+        tileset.tileSize = atoi(xmlTileset->Attribute("tileheight"));
+    } 
+    else 
+    {
+        cerr << "ERROR: Tileset missing 'tileheight' attribute." << endl;
+        return Tileset();
+    }
+
+    if(xmlTileset->Attribute("columns", &tileset.colCount)) 
+    {
+        tileset.colCount = atoi(xmlTileset->Attribute("columns"));
+    } 
+    else 
+    {
+        cerr << "WARNING: Tileset missing 'columns' attribute, defaulting to 0." << endl;
+        tileset.colCount = 0;
+    }
+
+    if(xmlTileset->Attribute("tilecount", &tileset.tileCount)) 
+    {
+        tileset.tileCount = atoi(xmlTileset->Attribute("tilecount"));
+    } 
+    else 
+    {
+        cerr << "WARNING: Tileset missing 'tilecount' attribute, defaulting to 0." << endl;
+        tileset.tileCount = 0;
+    }
+
+    tileset.lastID = (tileset.firstID + tileset.tileCount) - 1;
+
     return tileset;
 }
 
@@ -117,6 +195,12 @@ void MapParser::Clean()
         it->second = nullptr;
         //delete it->second;
     }
+
+    /*for(auto& pair : m_mapDict)
+    {
+        delete pair.second;
+        pair.second = nullptr;
+    }*/
 
     m_mapDict.clear();
 }
