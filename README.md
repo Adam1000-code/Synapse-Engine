@@ -8,6 +8,9 @@ The Synapse Engine is an open-source game engine written in C++ using SDL2 as it
 ### 9/13/2024
 I added the tilemap parser that uses TinyXML. If you clone the engine, DO NOT USE THE TILEMAP PARSER AT ALL. IT WILL RESULT IN A SEGMENTATION FAULT. As of now I'm actively trying to fix the issue and in the engine, I commented out the map functions that run with the engine.
 
+### 9/17/2024
+So it wasn't the tilemap parser that was broken, it was just the format of the engine map xml file. So I had to correct that and now it should be showing up fine, but it won't. I'll fix it later. But as of now, it seems that the issue is semi-fixed.
+
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
 
