@@ -42,13 +42,14 @@ bool Engine::Init(const char* title, int width, int height)
         SDL_Log("ERROR: Failed to create renderer: %s", SDL_GetError());
     }
 
-    /*if(!MapParser::GetInstance()->Load())
+    if(!MapParser::GetInstance()->Load())
     {
-        cerr << "ERROR: Failed to load map" << endl;
-        return false;
-    }*/
+        cout << "ERROR: Failed to load map" << endl;
+    }
 
-    //m_levelMap = MapParser::GetInstance()->GetMap("level1");
+    //MapParser::GetInstance()->Load();
+
+    m_levelMap = MapParser::GetInstance()->GetMap("level1");
 
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
     TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
@@ -64,7 +65,7 @@ bool Engine::Init(const char* title, int width, int height)
 void Engine::Update()
 {
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
-    //m_levelMap->Update();
+    m_levelMap->Update();
     player->Update(deltaTime);
 }
 
@@ -75,7 +76,7 @@ void Engine::Render()
 
     //TextureManager::GetInstance()->Draw("logo1", 0, 0, 110, 100, SDL_FLIP_NONE);
 
-    //m_levelMap->Render();
+    m_levelMap->Render();
     player->Draw();
     SDL_RenderPresent(m_renderer);
 }
