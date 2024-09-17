@@ -36,8 +36,8 @@ void TileLayer::Render()
                     {
                         if(tileID > m_tilesets[i].firstID && tileID < m_tilesets[i].lastID)
                         {
-                            //tileID = tileID + m_tilesets[i].tileCount - m_tilesets[i].lastID;
-                            tileID = tileID - m_tilesets[i].firstID + 1;
+                            tileID = tileID + m_tilesets[i].tileCount - m_tilesets[i].lastID;
+                            //tileID = tileID - m_tilesets[i].firstID + 1;
                             index = i;
                             break;
                         }
@@ -47,6 +47,10 @@ void TileLayer::Render()
                 Tileset ts = m_tilesets[index];
                 int tileRow = tileID / ts.colCount;
                 int tileCol = tileID - tileRow * ts.colCount - 1;
+
+                /*Tileset ts = m_tilesets[index];
+                int tileRow = (tileID - ts.firstID) / ts.colCount;
+                int tileCol = (tileID - ts.firstID) % ts.colCount;*/
 
                 if(tileID % ts.colCount == 0)
                 {
