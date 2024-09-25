@@ -46,7 +46,7 @@ bool Engine::Init(const char* title, int width, int height)
     {
         cout << "ERROR: Failed to load map" << endl;
     }
-
+    
     //MapParser::GetInstance()->Load();
 
     m_levelMap = MapParser::GetInstance()->GetMap("level1");
