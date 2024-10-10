@@ -11,6 +11,9 @@ I added the tilemap parser that uses TinyXML. If you clone the engine, DO NOT US
 ### 9/17/2024
 So it wasn't the tilemap parser that was broken, it was just the format of the engine map xml file. So I had to correct that and now it should be showing up fine, but it won't. I'll fix it later. But as of now, it seems that the issue is semi-fixed.
 
+### 10/10/24
+I'm starting to get back to work on the map parser. I was hoping I'd be done with it a month ago, but here I am, still working on getting the map to render to the screen. Everything should be working because the map file is parsed and read, but not drawn to the screen. If anyone wants to commit any changes to try and fix the problem, I would really appreciate it.
+
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
 
