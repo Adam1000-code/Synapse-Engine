@@ -1,4 +1,5 @@
 #include "mapparser.hpp"
+#include "../graphics/texturemanager.hpp"
 #include <string>
 
 using namespace std;
@@ -7,7 +8,12 @@ MapParser* MapParser::s_instance = nullptr;
 
 bool MapParser::Load()
 {
-    return Parse("level1", "assets/engineMap.tmx");
+    if(!Parse("level1", "assets/engineMap.tmx"))
+    {
+        return false;
+    }
+
+    return true;
 }
 
 bool MapParser::Parse(string id, string source)
@@ -24,8 +30,8 @@ bool MapParser::Parse(string id, string source)
     TiXmlElement* root = xml.RootElement();
     int rowCount, colCount, tileSize = 0;
 
-    root->Attribute("width", &rowCount);
-    root->Attribute("height", &colCount);
+    root->Attribute("width", &colCount);
+    root->Attribute("height", &rowCount);
     root->Attribute("tilewidth", &tileSize);
 
     TilesetList tilesets;
@@ -71,11 +77,12 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
     return tileset;*/
 
     Tileset tileset;
+    TilesetList tilesets;
 
     if(xmlTileset->Attribute("name")) 
     {
         tileset.name = xmlTileset->Attribute("name");
-    } 
+    }
     else 
     {
         cerr << "ERROR: Tileset missing 'name' attribute." << endl;
@@ -97,7 +104,7 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
     if(imageElement && imageElement->Attribute("source")) 
     {
         tileset.source = imageElement->Attribute("source");
-    } 
+    }
     else 
     {
         cerr << "ERROR: Tileset image missing 'source' attribute." << endl;
@@ -116,7 +123,7 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
     if(xmlTileset->Attribute("tilewidth", &tileset.tileSize)) 
     {
         tileset.tileSize = atoi(xmlTileset->Attribute("tilewidth"));
-    } 
+    }
     else 
     {
         cerr << "ERROR: Tileset missing 'tilewidth' attribute." << endl;
@@ -126,12 +133,12 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
     /*if(xmlTileset->Attribute("tileheight", &tileset.tileSize)) 
     {
         tileset.tileSize = atoi(xmlTileset->Attribute("tileheight"));
-    }
-    else 
+    }*/
+    /*else 
     {
         cerr << "ERROR: Tileset missing 'tileheight' attribute." << endl;
         return Tileset();
-    }*/
+    }*/ //leave this commented out
 
     if(xmlTileset->Attribute("columns", &tileset.colCount)) 
     {
@@ -146,11 +153,16 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
     if(xmlTileset->Attribute("tilecount", &tileset.tileCount)) 
     {
         tileset.tileCount = atoi(xmlTileset->Attribute("tilecount"));
-    } 
+    }
     else 
     {
         cerr << "WARNING: Tileset missing 'tilecount' attribute, defaulting to 0." << endl;
         tileset.tileCount = 0;
+    }
+
+    for(unsigned int i = 0; i < tilesets.size(); i++)
+    {
+        TextureManager::GetInstance()->Load(tilesets[i].name, "assets/" + tilesets[i].source);
     }
 
     tileset.lastID = (tileset.firstID + tileset.tileCount) - 1;
