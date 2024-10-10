@@ -1,12 +1,13 @@
 #include "tilelayer.hpp"
 #include "../graphics/texturemanager.hpp"
 
-TileLayer::TileLayer(int tilesize, int rowcount, int colcount, TileMap tilemap, TilesetList tilesets) : m_tileSize(tilesize), m_colCount(colcount), m_rowCount(rowcount), m_tilemap(tilemap), m_tilesets(tilesets)
+TileLayer::TileLayer(int tilesize, int rowcount, int colcount, TileMap tilemap, TilesetList tilesets)// : m_tileSize(tilesize), m_colCount(colcount), m_rowCount(rowcount), m_tilemap(tilemap), m_tilesets(tilesets)
 {
-    /*m_rowCount = rowcount;
+    m_tileSize = tilesize;
+    m_rowCount = rowcount;
     m_colCount = colcount;
     m_tilemap = tilemap;
-    m_tilesets = tilesets;*/
+    m_tilesets = tilesets;
 
     for(unsigned int i = 0; i < m_tilesets.size(); i++)
     {
@@ -36,8 +37,9 @@ void TileLayer::Render()
                     {
                         if(tileID > m_tilesets[i].firstID && tileID < m_tilesets[i].lastID)
                         {
-                            tileID = tileID + m_tilesets[i].tileCount - m_tilesets[i].lastID;
+                            //tileID = tileID + m_tilesets[i].tileCount - m_tilesets[i].lastID;
                             //tileID = tileID - m_tilesets[i].firstID + 1;
+                            tileID -= m_tilesets[i].firstID;
                             index = i;
                             break;
                         }

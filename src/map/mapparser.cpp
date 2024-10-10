@@ -104,6 +104,15 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
         return Tileset();
     }
 
+    /*if(xmlTileset->FirstChildElement()->Value() == string("image"))
+    {
+        tileset.source = xmlTileset->FirstChildElement("image")->Attribute("source");
+    }
+	else
+    {
+        tileset.source = xmlTileset->Attribute("source");
+    }*/ // comment this out
+
     if(xmlTileset->Attribute("tilewidth", &tileset.tileSize)) 
     {
         tileset.tileSize = atoi(xmlTileset->Attribute("tilewidth"));
@@ -114,15 +123,15 @@ Tileset MapParser::ParseTileset(TiXmlElement* xmlTileset)
         return Tileset();
     }
 
-    if(xmlTileset->Attribute("tileheight", &tileset.tileSize)) 
+    /*if(xmlTileset->Attribute("tileheight", &tileset.tileSize)) 
     {
         tileset.tileSize = atoi(xmlTileset->Attribute("tileheight"));
-    } 
+    }
     else 
     {
         cerr << "ERROR: Tileset missing 'tileheight' attribute." << endl;
         return Tileset();
-    }
+    }*/
 
     if(xmlTileset->Attribute("columns", &tileset.colCount)) 
     {

@@ -4,7 +4,7 @@
 #include <string>
 #include "gamemap.hpp"
 #include "tilelayer.hpp"
-#include "../vendor/TinyXML2/tinyxml2.h"
+#include "../vendor/TinyXML/tinyxml.h"
 
 using namespace std;
 
