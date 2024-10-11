@@ -1,6 +1,6 @@
 #include "engine.hpp"
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "../graphics/texturemanager.hpp"
 #include "../physics/vector2D.hpp"
 #include "../physics/transform.hpp"
@@ -9,6 +9,7 @@
 #include "../input/input.hpp"
 #include "../time/timer.hpp"
 #include "../map/mapparser.hpp"
+#include "../camera/camera.hpp"
 #include <iostream>
 #include <string>
 
@@ -59,6 +60,7 @@ bool Engine::Init(const char* title, int width, int height)
     Transform tf;
     tf.Log();
 
+    Camera::GetInstance()->SetTarget(player->GetOrigin());
     return m_isRunning = true;
 }
 
@@ -67,6 +69,7 @@ void Engine::Update()
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
     m_levelMap->Update();
     player->Update(deltaTime);
+    Camera::GetInstance()->Update(deltaTime);
 }
 
 void Engine::Render()
@@ -89,6 +92,7 @@ void Engine::Events()
 bool Engine::Clean()
 {
     TextureManager::GetInstance()->Clean();
+    MapParser::GetInstance()->Clean();
     SDL_DestroyRenderer(m_renderer);
     IMG_Quit();
     SDL_Quit();

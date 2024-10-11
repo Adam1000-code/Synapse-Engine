@@ -2,7 +2,8 @@
 
 #include "iobject.hpp"
 #include "../physics/transform.hpp"
-#include "SDL2/SDL.h"
+#include "../physics/point.hpp"
+#include <SDL2/SDL.h>
 #include <iostream>
 #include <string>
 
@@ -34,6 +35,16 @@ class GameObject : public IObject
         GameObject(Properties* props) : m_textureID(props->p_textureID), m_width(props->p_width), m_height(props->p_height), m_flip(props->p_flip)
         {
             m_transform = new Transform(props->p_x, props->p_y);
+            
+            float px = props->p_x + props->p_width / 2;
+            float py = props->p_y + props->p_height / 2;
+
+            m_origin = new Point(px, py);
+        }
+
+        inline Point* GetOrigin()
+        {
+            return m_origin;
         }
 
         virtual void Draw() = 0;
@@ -41,6 +52,7 @@ class GameObject : public IObject
         virtual void Clean() = 0;
 
     protected:
+        Point* m_origin;
         Transform* m_transform;
         int m_width, m_height;
         string m_textureID;

@@ -8,8 +8,8 @@ void Camera::Update(float deltaTime)
 {
     if(target != nullptr)
     {
-        viewPort.x = target->X - SCREEN_WIDTH / 2;
-        viewPort.y = target->Y - SCREEN_HEIGHT / 2;
+        viewPort.x = static_cast<int>(target->X) - SCREEN_WIDTH / 2;
+        viewPort.y = static_cast<int>(target->Y) - SCREEN_HEIGHT / 2;
 
         if(viewPort.x < 0)
         {
@@ -32,5 +32,10 @@ void Camera::Update(float deltaTime)
         }
 
         position = Vector2D(viewPort.x, viewPort.y);
+    }
+    else
+    {
+        // Handle case where target is not set
+        SDL_Log("Camera target is null.");
     }
 }

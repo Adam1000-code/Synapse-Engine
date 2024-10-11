@@ -2,7 +2,7 @@
 #include "../physics/rigidbody.hpp"
 #include "../graphics/texturemanager.hpp"
 #include "../input/input.hpp"
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
 
 Player::Player(Properties* props) : Character(props)
 {
@@ -41,6 +41,9 @@ void Player::Update(float deltaTime)
         m_rigidbody->ApplyForceX(3 * BACKWARD);
         m_animation->SetProperties("player_run", 1, 6, 100, SDL_FLIP_HORIZONTAL);
     }
+
+    m_origin->X = m_transform->X + m_width / 2;
+    m_origin->Y = m_transform->Y + m_height / 2;
 
     m_animation->Update();
 }
