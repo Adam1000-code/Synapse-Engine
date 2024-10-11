@@ -1,6 +1,6 @@
 #include "input.hpp"
 #include <iostream>
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
 #include "../core/engine.hpp"
 
 Input* Input::s_instance = nullptr;

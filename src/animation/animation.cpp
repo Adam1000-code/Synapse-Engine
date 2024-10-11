@@ -1,5 +1,5 @@
 #include "animation.hpp"
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
 #include "../graphics/texturemanager.hpp"
 
 void Animation::Draw(float x, float y, int spriteWidth, int spriteHeight)
