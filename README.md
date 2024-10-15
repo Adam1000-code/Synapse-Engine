@@ -7,7 +7,7 @@ The Synapse Engine is an open-source game engine written in C++ using SDL2 as it
 ## Announcements
 ### 9/13/2024
 I added the tilemap parser that uses TinyXML. If you clone the engine, DO NOT USE THE TILEMAP PARSER AT ALL. IT WILL RESULT IN A SEGMENTATION FAULT. As of now I'm actively trying to fix the issue and in the engine, I commented out the map functions that run with the engine.
-\Thanks! -Adam
+Thanks! -Adam
 
 ### 9/17/2024
 So it wasn't the tilemap parser that was broken, it was just the format of the engine map xml file. So I had to correct that and now it should be showing up fine, but it won't. I'll fix it later. But as of now, it seems that the issue is semi-fixed.
@@ -15,7 +15,7 @@ So it wasn't the tilemap parser that was broken, it was just the format of the e
 
 ### 10/10/24
 I'm starting to get back to work on the map parser. I was hoping I'd be done with it a month ago, but here I am, still working on getting the map to render to the screen. Everything should be working because the map file is parsed and read, but not drawn to the screen. If anyone wants to commit any changes to try and fix the problem, I would really appreciate it.
-\Cheers! -Adam
+Cheers! -Adam
 
 ### 10/10/24 #2
 The map parser is now working after 3 full months of work and 1 incredibly painful month of attempts to fix it. it turns out these lines,
@@ -24,11 +24,11 @@ root->Attribute("width", &colCount);
 root->Attribute("height", &rowCount);
 ```
 were backwards so I had to swap row count in width for col count from height. I'm just glad that my suffering is over (for now) and I can finally move onto the camera view port. Also I added a more minimal map for testing reasons and it can be used to test individual layer rendering. You can now test the map parser and it should work just fine. If anyone has any issues with it, just leave an issue and I'll see what I can do.
-\Cheers! -Adam
+Cheers! -Adam
 
 ### 10/15/24
 I've implemented the camera mechanic into the engine. I'm also working on the collision handling for it as well. It may be a while before I finish it, but you have to remember that I'm the only one working on this engine, so everything is gonna move slowly. For now, enjoy the camera!
-\Cheers! -Adam
+Cheers! -Adam
 
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
