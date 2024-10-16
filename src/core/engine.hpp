@@ -34,6 +34,10 @@ class Engine
         {
             return m_renderer;
         }
+        inline GameMap* GetMap()
+        {
+            return m_levelMap;
+        }
     
     private:
         bool m_isRunning;

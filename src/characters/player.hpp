@@ -3,6 +3,10 @@
 #include "character.hpp"
 #include "../animation/animation.hpp"
 #include "../physics/rigidbody.hpp"
+#include "../physics/collider.hpp"
+
+#define JUMP_TIME 15.0f
+#define JUMP_FORCE 10.0f
 
 class Player : public Character
 {
@@ -16,6 +20,14 @@ class Player : public Character
     private:
         //int m_row, m_frame, m_frameCount;
         //int m_animSpeed;
+        bool isJumping;
+        bool isGrounded;
+
+        float jumpForce;
+        float jumpTime;
+
+        Collider* m_collider;
         RigidBody* m_rigidbody;
         Animation* m_animation;
+        Vector2D lastSafePos;
 };
