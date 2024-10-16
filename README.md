@@ -30,6 +30,8 @@ Cheers! -Adam
 I've implemented the camera mechanic into the engine. I'm also working on the collision handling for it as well. It may be a while before I finish it, but you have to remember that I'm the only one working on this engine, so everything is gonna move slowly. For now, enjoy the camera!
 Cheers! -Adam
 
+### 10/16/24 ==NEW==
+
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
 
