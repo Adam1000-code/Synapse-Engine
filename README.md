@@ -31,6 +31,8 @@ I've implemented the camera mechanic into the engine. I'm also working on the co
 Cheers! -Adam
 
 ### 10/16/24 **NEW**
+I've coded the basic collision handler and I'm now going to work on the animation states. As of now, I'm thinking of reworking the engine again, due to the fact that both times I've coded it I've used YouTube tutorials and other guides online. I'm thinking I start over and leave myself to figure everything out. Its a way to help me think like a programmer and escape tutorial hell. For now I'll finish what I've already started. I'm still debating it, so it may or may not happen. That's about it for now, good luck with your Synapse projects.
+Cheers! -Adam
 
 ## Recent Updates
 Beta 0.65 adds a better map parser, some bug fixes, and a camera movement system.
