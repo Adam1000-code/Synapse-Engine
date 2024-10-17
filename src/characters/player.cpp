@@ -54,14 +54,14 @@ void Player::Update(float deltaTime)
         m_animation->SetProperties("player_run", 1, 6, 100, SDL_FLIP_HORIZONTAL);
     }
 
-    if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_J) && isGrounded)
+    if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && isGrounded)
     {
         isJumping = true;
         isGrounded = false;
         m_rigidbody->ApplyForceY(UPWARD * jumpForce);
     }
 
-    if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_J) && isJumping && jumpTime > 0)
+    if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && isJumping && jumpTime > 0)
     {
         jumpTime -= deltaTime;
         m_rigidbody->ApplyForceY(UPWARD * jumpForce);
