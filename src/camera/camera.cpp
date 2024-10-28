@@ -35,7 +35,6 @@ void Camera::Update(float deltaTime)
     }
     else
     {
-        // Handle case where target is not set
-        SDL_Log("Camera target is null.");
+        SDL_Log("Camera target is null");
     }
 }
