@@ -7,6 +7,7 @@
 
 #define JUMP_TIME 15.0f
 #define JUMP_FORCE 10.0f
+#define RUN_FORCE 4.0f
 
 class Player : public Character
 {
@@ -15,13 +16,17 @@ class Player : public Character
 
         virtual void Draw();
         virtual void Update(float deltaTime);
+        virtual void AnimationState();
         virtual void Clean();
     
     private:
+
         //int m_row, m_frame, m_frameCount;
         //int m_animSpeed;
         bool isJumping;
         bool isGrounded;
+        bool isWalking;
+        bool isIdle;
 
         float jumpForce;
         float jumpTime;

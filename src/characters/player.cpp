@@ -8,6 +8,11 @@
 
 Player::Player(Properties* props) : Character(props)
 {
+    isGrounded = false;
+    isJumping = false;
+    isWalking = false;
+    isIdle = false;
+
     jumpForce = JUMP_FORCE;
     jumpTime = JUMP_TIME;
 
@@ -29,29 +34,33 @@ void Player::Draw()
 {
     m_animation->Draw(m_transform->X, m_transform->Y, m_width, m_height);
 
-    Vector2D cam = Camera::GetInstance()->GetPosition();
+    /*Vector2D cam = Camera::GetInstance()->GetPosition();
     SDL_Rect box = m_collider->Get();
     box.x -= cam.X;
     box.y -= cam.Y;
-    SDL_RenderDrawRect(Engine::GetInstance()->GetRenderer(), &box);
+    SDL_RenderDrawRect(Engine::GetInstance()->GetRenderer(), &box);*/
 }
 
 void Player::Update(float deltaTime)
 {
     m_rigidbody->EraseForce();
 
-    m_animation->SetProperties("player", 1, 6, 100, m_flip);
-
     if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_D))
     {
         m_rigidbody->ApplyForceX(3 * FORWARD);
-        m_animation->SetProperties("player_run", 1, 6, 100, m_flip);
+        m_flip = SDL_FLIP_NONE;
+        isWalking = true;
+    }
+    else
+    {
+        isWalking = false;
     }
 
     if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_A))
     {
         m_rigidbody->ApplyForceX(3 * BACKWARD);
-        m_animation->SetProperties("player_run", 1, 6, 100, SDL_FLIP_HORIZONTAL);
+        m_flip = SDL_FLIP_HORIZONTAL;
+        isWalking = true;
     }
 
     if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_SPACE) && isGrounded)
@@ -97,11 +106,6 @@ void Player::Update(float deltaTime)
         isGrounded = false;
     }
 
-    if(isJumping || !isGrounded)
-    {
-        m_animation->SetProperties("player_jump", 1, 1, 150, m_flip);
-    }
-
     // old/unused physics code
     //m_transform->TranslateX(m_rigidbody->Position().X);
     //m_transform->TranslateY(m_rigidbody->Position().Y);
@@ -111,6 +115,33 @@ void Player::Update(float deltaTime)
 
     m_rigidbody->Update(deltaTime);
     m_animation->Update();
+}
+
+void Player::AnimationState()
+{
+    if(isIdle)
+    {
+        m_animation->SetProperties("player", 1, 6, 100, m_flip);
+    }
+
+    if(isGrounded && !isWalking)
+    {
+        isIdle = true;
+    }
+    else
+    {
+        isIdle = false;
+    }
+
+    if(isJumping || !isGrounded)
+    {
+        m_animation->SetProperties("player_jump", 1, 1, 150, m_flip);
+    }
+
+    if(isWalking && !isJumping)
+    {
+        m_animation->SetProperties("player_run", 1, 6, 100, m_flip);
+    }    
 }
 
 void Player::Clean()
