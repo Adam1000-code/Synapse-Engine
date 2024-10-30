@@ -16,10 +16,10 @@ class Player : public Character
 
         virtual void Draw();
         virtual void Update(float deltaTime);
-        virtual void AnimationState();
         virtual void Clean();
     
     private:
+        void AnimationState();
 
         //int m_row, m_frame, m_frameCount;
         //int m_animSpeed;

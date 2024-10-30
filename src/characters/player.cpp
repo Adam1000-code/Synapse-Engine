@@ -115,6 +115,8 @@ void Player::Update(float deltaTime)
 
     m_rigidbody->Update(deltaTime);
     m_animation->Update();
+
+    AnimationState();
 }
 
 void Player::AnimationState()
