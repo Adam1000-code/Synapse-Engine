@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<textures>
+    <texture id="playerRun" src="assets/Run (32x32).png">
+    <texture id="playerIdle" src="assets/Idle (32x32).png">
+    <texture id="playerJump" src="assets/Jump (32x32).png">
+</textures>
