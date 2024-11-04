@@ -19,14 +19,10 @@ class Player : public Character
         virtual void Clean();
     
     private:
-        void AnimationState();
-
         //int m_row, m_frame, m_frameCount;
         //int m_animSpeed;
         bool isJumping;
         bool isGrounded;
-        bool isWalking;
-        bool isIdle;
 
         float jumpForce;
         float jumpTime;
