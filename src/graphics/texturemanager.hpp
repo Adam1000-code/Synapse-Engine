@@ -20,7 +20,7 @@ class TextureManager
 
         bool Load(string id, string filename);
         bool ParseTextures(string source);
-        void Draw(string id, int x, int y, int width, int height, float scale = 1, float scrollRatio = 0, SDL_RendererFlip flip = SDL_FLIP_NONE);
+        void Draw(string id, int x, int y, int width, int height, float scaleX = 1, float scaleY = 1, float scrollRatio = 0, SDL_RendererFlip flip = SDL_FLIP_NONE);
         void DrawFrame(string id, int x, int y, int width, int height, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
         void DrawTile(string tilesetID, int tilesize, int x, int y, int row, int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
         void Drop(string id);
