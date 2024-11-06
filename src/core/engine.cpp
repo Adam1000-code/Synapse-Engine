@@ -53,6 +53,7 @@ bool Engine::Init(const char* title, int width, int height)
     m_levelMap = MapParser::GetInstance()->GetMap("level1");
 
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
+    TextureManager::GetInstance()->ParseTextures("assets/textures.xml");
     TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
     TextureManager::GetInstance()->Load("player_run", "assets/Run (32x32).png");
     TextureManager::GetInstance()->Load("player_jump", "assets/Jump (32x32).png");
