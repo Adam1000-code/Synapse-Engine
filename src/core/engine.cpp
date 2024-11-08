@@ -54,9 +54,9 @@ bool Engine::Init(const char* title, int width, int height)
 
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
     TextureManager::GetInstance()->ParseTextures("assets/textures.xml");
-    TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
-    TextureManager::GetInstance()->Load("player_run", "assets/Run (32x32).png");
-    TextureManager::GetInstance()->Load("player_jump", "assets/Jump (32x32).png");
+    //TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
+    //TextureManager::GetInstance()->Load("player_run", "assets/Run (32x32).png");
+    //TextureManager::GetInstance()->Load("player_jump", "assets/Jump (32x32).png");
     player = new Player(new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
 
     Transform tf;

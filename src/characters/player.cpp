@@ -43,17 +43,17 @@ void Player::Update(float deltaTime)
 {
     m_rigidbody->EraseForce();
 
-    m_animation->SetProperties("player", 1, 6, 100, m_flip);
+    m_animation->SetProperties("playerIdle", 1, 6, 100, m_flip);
 
     if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_D))
     {
-        m_animation->SetProperties("player_run", 1, 6, 100, m_flip);
+        m_animation->SetProperties("playerRun", 1, 6, 100, m_flip);
         m_rigidbody->ApplyForceX(3 * FORWARD);
         m_flip = SDL_FLIP_NONE;
     }
     if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_A))
     {
-        m_animation->SetProperties("player_run", 1, 6, 100, m_flip);
+        m_animation->SetProperties("playerRun", 1, 6, 100, m_flip);
         m_rigidbody->ApplyForceX(3 * BACKWARD);
         m_flip = SDL_FLIP_HORIZONTAL;
     }
@@ -103,7 +103,7 @@ void Player::Update(float deltaTime)
 
     if(isJumping || !isGrounded)
     {
-        m_animation->SetProperties("player_jump", 1, 1, 150, m_flip);
+        m_animation->SetProperties("playerJump", 1, 1, 150, m_flip);
     }
 
     // old/unused physics code
