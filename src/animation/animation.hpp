@@ -9,17 +9,19 @@ using namespace std;
 class Animation
 {
     public:
-        Animation()
+        Animation(bool m_repeat = true): repeat(m_repeat)
         {
+            isEnded = false;
         }
 
-        void Draw(float x, float y, int spriteWidth, int spriteHeight);
-        void Update();
-        void SetProperties(string textureID, int spriteRow, int frameCount, int animSpeed, SDL_RendererFlip flip);
-    
-    private:
-        int m_spriteRow, m_spriteFrame;
-        int m_animSpeed, m_frameCount;
-        string m_textureID;
-        SDL_RendererFlip m_flip;
+        virtual void update(float deltaTime) = 0;
+        inline bool IsEnded()
+        {
+            return isEnded;
+        }
+
+    protected:
+        bool repeat;
+        bool isEnded;
+        int currentFrame;
 };
