@@ -14,7 +14,7 @@ class Animation
             isEnded = false;
         }
 
-        virtual void update(float deltaTime) = 0;
+        virtual void Update(float deltaTime) = 0;
         inline bool IsEnded()
         {
             return isEnded;
