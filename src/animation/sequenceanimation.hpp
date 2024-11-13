@@ -31,6 +31,6 @@ class SequenceAnimation : public Animation
         void DrawFrame(float x, float y, float scaleX = 1, float scaleY = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
     private:
-        Sequence CurrentSequence;
+        Sequence currentSequence;
         map<string, Sequence> sequenceMap;
 };
