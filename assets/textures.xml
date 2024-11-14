@@ -3,4 +3,5 @@
     <texture id="playerRun" src="assets/Run (32x32).png"/>
     <texture id="playerIdle" src="assets/Idle (32x32).png"/>
     <texture id="playerJump" src="assets/Jump (32x32).png"/>
+    <texture id="enemyIdle1" src="assets/Jump (32x32).png"/>
 </textures>
