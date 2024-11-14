@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animations>
+    <sequence id="enemyIdle" frameCount=6 speed=100 width=460 height=352>
+        <frame textureID = "enemyIdle1"/>
+    </sequence>
+</animations>
