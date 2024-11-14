@@ -17,7 +17,9 @@ Player::Player(Properties* props) : Character(props)
     m_rigidbody = new RigidBody();
     m_rigidbody->SetGravity(3.0f);
 
-    m_animation = new Animation();
+    //bool loopAnim = true;
+
+    m_animation = new SpriteAnimation();
 
     m_collider = new Collider();
     m_collider->SetBuffer(-60, -20, 0, 0);
@@ -30,7 +32,7 @@ Player::Player(Properties* props) : Character(props)
 
 void Player::Draw()
 {
-    m_animation->Draw(m_transform->X, m_transform->Y, m_width, m_height);
+    m_animation->Draw(m_transform->X, m_transform->Y, m_width, m_height, m_flip);
 
     /*Vector2D cam = Camera::GetInstance()->GetPosition();
     SDL_Rect box = m_collider->Get();
@@ -114,7 +116,7 @@ void Player::Update(float deltaTime)
     m_origin->Y = m_transform->Y + m_height / 2;
 
     m_rigidbody->Update(deltaTime);
-    m_animation->Update();
+    m_animation->Update(deltaTime);
 }
 
 void Player::Clean()

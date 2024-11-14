@@ -1,7 +1,7 @@
 #pragma once
 
 #include "character.hpp"
-#include "../animation/animation.hpp"
+#include "../animation/spriteanimation.hpp"
 #include "../physics/rigidbody.hpp"
 #include "../physics/collider.hpp"
 
@@ -29,6 +29,6 @@ class Player : public Character
 
         Collider* m_collider;
         RigidBody* m_rigidbody;
-        Animation* m_animation;
+        SpriteAnimation* m_animation;
         Vector2D lastSafePos;
 };
