@@ -4,7 +4,10 @@
 #include "../input/input.hpp"
 #include "../camera/camera.hpp"
 #include "../collision/collisionhandler.hpp"
+#include "../factory/objectcreator.hpp"
 #include <SDL2/SDL.h>
+
+static ObjectRegister<Player> m_register("Player");
 
 Player::Player(Properties* props) : Character(props)
 {
