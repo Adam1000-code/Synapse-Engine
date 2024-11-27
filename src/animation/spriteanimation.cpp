@@ -8,7 +8,7 @@ SpriteAnimation::SpriteAnimation(bool repeat): Animation(repeat)
 {
 }
 
-void SpriteAnimation::Draw(float x, float y, int spriteWidth, int spriteHeight, float scaleX, float scaleY, SDL_RendererFlip flip)
+void SpriteAnimation::Draw(float x, float y, int spriteWidth, int spriteHeight, float scaleX, float scaleY)
 {
     TextureManager::GetInstance()->DrawFrame(textureID, x, y, spriteWidth, spriteHeight, spriteRow, currentFrame, flip);
 }

@@ -12,7 +12,7 @@ class SpriteAnimation : public Animation
         SpriteAnimation(bool repeat = true);
 
         virtual void Update(float deltaTime);
-        void Draw(float x, float y, int spriteWidth, int spriteHeight, float scaleX = 1, float scaleY = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
+        void Draw(float x, float y, int spriteWidth, int spriteHeight, float scaleX = 1, float scaleY = 1);
         void SetProperties(string textureID, int spriteRow, int frameCount, int animSpeed, SDL_RendererFlip m_flip = SDL_FLIP_NONE);
 
         int GetCurrentFrame()
