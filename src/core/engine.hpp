@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "../map/gamemap.hpp"
+#include "../states/gamestate.hpp"
 
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
@@ -26,6 +27,10 @@ class Engine
         void Events();
         void Quit();
 
+        void PopState();
+        void PushState(GameState* current);
+        void ChangeState(GameState* target);
+
         inline bool isRunning()
         {
             return m_isRunning;
@@ -45,4 +50,5 @@ class Engine
         SDL_Window* m_window;
         SDL_Renderer* m_renderer;
         static Engine* s_instance;
+        vector<GameState*> m_states;
 };
