@@ -4,6 +4,8 @@
 #include <SDL2/SDL_image.h>
 #include "../map/gamemap.hpp"
 #include "../states/gamestate.hpp"
+#include "../object/gameobject.hpp"
+#include "../characters/character.hpp"
 
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
@@ -51,4 +53,6 @@ class Engine
         SDL_Renderer* m_renderer;
         static Engine* s_instance;
         vector<GameState*> m_states;
+        //vector<GameObject*> m_objects;
+        //vector<Character*> m_characters;
 };

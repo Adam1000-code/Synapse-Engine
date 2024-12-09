@@ -71,6 +71,17 @@ void Engine::Update()
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
     m_levelMap->Update();
     player->Update(deltaTime);
+
+    /*for(auto charact : m_characters)
+    {
+        charact->Update(deltaTime);
+    }
+
+    for(auto gameobj: m_objects)
+    {
+        gameobj->Update(deltaTime);
+    }*/
+
     Camera::GetInstance()->Update(deltaTime);
 }
 
@@ -83,6 +94,17 @@ void Engine::Render()
 
     m_levelMap->Render();
     player->Draw();
+
+    /*for(auto charact : m_characters)
+    {
+        charact->Draw();
+    }
+
+    for(auto gameobj : m_objects)
+    {
+        gameobj->Draw();
+    }*/
+
     SDL_RenderPresent(m_renderer);
 }
 
@@ -93,6 +115,10 @@ void Engine::Events()
 
 bool Engine::Clean()
 {
+    /*for(auto gameobj : m_objects)
+    {
+        gameobj->Clean();
+    }*/
     TextureManager::GetInstance()->Clean();
     MapParser::GetInstance()->Clean();
     SDL_DestroyRenderer(m_renderer);
