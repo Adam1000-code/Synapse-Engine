@@ -31,6 +31,11 @@ class Vector2D
         {
             return Vector2D(X * scalar, Y * scalar);
         }
+        // distance calculation
+        inline Vector2D distance(Vector2D& v1, Vector2D& v2) const
+        {
+            return Vector2D(v2.X - v1.X, v2.Y - v1.Y);
+        }
 
         void Log(string msg)
         {
