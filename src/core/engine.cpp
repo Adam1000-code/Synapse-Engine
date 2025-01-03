@@ -52,6 +52,11 @@ bool Engine::Init(const char* title, int width, int height)
 
     m_levelMap = MapParser::GetInstance()->GetMap("level1");
 
+    for(auto states : m_states)
+    {
+        states->Init();
+    }
+
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
     TextureManager::GetInstance()->ParseTextures("assets/textures.xml");
     //TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
@@ -71,6 +76,11 @@ void Engine::Update()
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
     m_levelMap->Update();
     player->Update(deltaTime);
+
+    for(auto states : m_states)
+    {
+        states->Update();
+    }
 
     /*for(auto charact : m_characters)
     {
@@ -95,6 +105,11 @@ void Engine::Render()
     m_levelMap->Render();
     player->Draw();
 
+    for(auto states : m_states)
+    {
+        states->Render();
+    }
+
     /*for(auto charact : m_characters)
     {
         charact->Draw();
@@ -115,6 +130,10 @@ void Engine::Events()
 
 bool Engine::Clean()
 {
+    for(auto states : m_states)
+    {
+        states->Exit();
+    }
     /*for(auto gameobj : m_objects)
     {
         gameobj->Clean();
@@ -128,5 +147,21 @@ bool Engine::Clean()
 
 void Engine::Quit()
 {
+    for(auto states : m_states)
+    {
+        states->Exit();
+    }
     m_isRunning = false;
+}
+
+void Engine::PopState()
+{
+}
+
+void Engine::PushState(GameState *current)
+{
+}
+
+void Engine::ChangeState(GameState *target)
+{
 }
