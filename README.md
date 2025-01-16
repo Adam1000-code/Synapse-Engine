@@ -34,8 +34,12 @@ Cheers! -Adam
 I've coded the basic collision handler and I'm now going to work on the animation states. As of now, I'm thinking of reworking the engine again, due to the fact that both times I've coded it I've used YouTube tutorials and other guides online. I'm thinking I start over and leave myself to figure everything out. Its a way to help me think like a programmer and escape tutorial hell. For now I'll finish what I've already started. I'm still debating it, so it may or may not happen. That's about it for now, good luck with your Synapse projects.
 Cheers! -Adam
 
-### 11/14/24 **NEW**
+### 11/14/24
 I've added quite a few things as of now. Textures are now to be parsed from xml files for easier access and organization. Animation has been reworked. There's the basic spritesheet animation and then there's the new sequence animation. It hasn't been tested yet, so if anyone is using the engine, please give it a shot and let me know how it works. As of now I'm working on the game object generator for easier game object creation and usability. That's all. Good luck with your synapse projects!
+Cheers! -Adam
+
+### 1/16/25 **NEW**I
+Decided to step away from this project for a bit. Today I decided I was going to finally code and fix the engine's state functions. As of now, I'm happy to say that the game states are finally implemented. I'll now begin work on the camera component for the engine. Happy late new year!!
 Cheers! -Adam
 
 ## Recent Updates
