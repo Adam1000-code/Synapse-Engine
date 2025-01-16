@@ -10,6 +10,8 @@
 #include "../time/timer.hpp"
 #include "../map/mapparser.hpp"
 #include "../camera/camera.hpp"
+#include "../states/menu.hpp"
+#include "../states/play.hpp"
 #include <iostream>
 #include <string>
 
@@ -52,11 +54,6 @@ bool Engine::Init(const char* title, int width, int height)
 
     m_levelMap = MapParser::GetInstance()->GetMap("level1");
 
-    for(auto states : m_states)
-    {
-        states->Init();
-    }
-
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
     TextureManager::GetInstance()->ParseTextures("assets/textures.xml");
     //TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
@@ -64,8 +61,15 @@ bool Engine::Init(const char* title, int width, int height)
     //TextureManager::GetInstance()->Load("player_jump", "assets/Jump (32x32).png");
     player = new Player(new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
 
+    for(auto states : m_states)
+    {
+        states->Init();
+    }
+
     Transform tf;
     tf.Log();
+
+    //PushState(new Menu());
 
     Camera::GetInstance()->SetTarget(player->GetOrigin());
     return m_isRunning = true;
@@ -120,6 +124,11 @@ void Engine::Render()
         gameobj->Draw();
     }*/
 
+    if(!m_states.empty())
+    {
+        m_states.back()->Render();
+    }
+
     SDL_RenderPresent(m_renderer);
 }
 
@@ -130,6 +139,10 @@ void Engine::Events()
 
 bool Engine::Clean()
 {
+    while(!m_states.empty())
+    {
+        PopState();
+    }
     for(auto states : m_states)
     {
         states->Exit();
@@ -156,12 +169,29 @@ void Engine::Quit()
 
 void Engine::PopState()
 {
+    if(!m_states.empty())
+    {
+        m_states.back()->Exit();
+        delete m_states.back();
+        m_states.pop_back();
+    }
 }
 
 void Engine::PushState(GameState *current)
 {
+    m_states.push_back(current);
+    m_states.back()->Init();
 }
 
 void Engine::ChangeState(GameState *target)
 {
+    if(!m_states.empty())
+    {
+        m_states.back()->Exit();
+        delete m_states.back();
+        m_states.pop_back();
+    }
+
+    m_states.push_back(target);
+    m_states.back()->Init();
 }
