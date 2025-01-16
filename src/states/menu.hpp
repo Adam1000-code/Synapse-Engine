@@ -11,11 +11,11 @@ class Menu : public GameState
     public:
         Menu();
 
-        virtual bool Init() = 0;
-        virtual bool Exit() = 0;
+        virtual bool Init();
+        virtual bool Exit();
 
-        virtual void Render() = 0;
-        virtual void Update() = 0;
+        virtual void Render();
+        virtual void Update();
 
     private:
         static void StartGame();
