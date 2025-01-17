@@ -1,3 +1,3 @@
 # Documentation folder Index
 
-[Getting Started](/GettingStarted.md)
+[Getting Started](./GettingStarted.md)
