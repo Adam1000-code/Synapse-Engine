@@ -34,6 +34,7 @@ class Vector2D
         // distance calculation
         inline Vector2D distance(Vector2D& v1, Vector2D& v2) const
         {
+            // based off the euclidean distance formula. not sure if I adapted it into code that well. may recode later 
             return Vector2D(v2.X - v1.X, v2.Y - v1.Y);
         }
 
