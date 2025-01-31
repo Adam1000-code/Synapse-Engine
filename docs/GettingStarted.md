@@ -3,6 +3,17 @@
 ## Installing the engine
 To start off, You need to make sure that the neccessary packages are installed on your system.
 
+### Required Packages:
+
+1. GCC/G++ or Clang
+2. SDL2
+3. SDL2_image
+4. Python
+5. Git
+6. Makefile support
+
+### Install SDL2 and SDL2_image
+
 Apt package manager:
 
 ```
@@ -30,3 +41,8 @@ HomeBrew (MacOS)
 $ brew install sdl2
 $ brew install sdl2_image
 ```
+
+Now that the neccessary packages for the engine are installed, we can now proceed to the next part of the installation.
+
+### Synapse Tools Introduction
+Synapse Tools is a collection of Python scripts that helps with development with the Synapse Engine.
