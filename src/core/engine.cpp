@@ -18,7 +18,6 @@
 using namespace std;
 
 Engine* Engine::s_instance = nullptr;
-Player* player = nullptr;
 
 Engine::Engine()
 {
@@ -52,34 +51,29 @@ bool Engine::Init(const char* title, int width, int height)
     
     //MapParser::GetInstance()->Load();
 
-    m_levelMap = MapParser::GetInstance()->GetMap("level1");
+    //m_levelMap = MapParser::GetInstance()->GetMap("level1");
 
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
-    TextureManager::GetInstance()->ParseTextures("assets/textures.xml");
     //TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
     //TextureManager::GetInstance()->Load("player_run", "assets/Run (32x32).png");
     //TextureManager::GetInstance()->Load("player_jump", "assets/Jump (32x32).png");
-    player = new Player(new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
 
     for(auto states : m_states)
     {
         states->Init();
     }
 
-    Transform tf;
-    tf.Log();
+    //Transform tf;
+    //tf.Log();
 
-    //PushState(new Menu());
+    PushState(new Play());
 
-    Camera::GetInstance()->SetTarget(player->GetOrigin());
     return m_isRunning = true;
 }
 
 void Engine::Update()
 {
-    float deltaTime = Timer::GetInstance()->GetDeltaTime();
     m_levelMap->Update();
-    player->Update(deltaTime);
 
     for(auto states : m_states)
     {
@@ -95,20 +89,15 @@ void Engine::Update()
     {
         gameobj->Update(deltaTime);
     }*/
-
-    Camera::GetInstance()->Update(deltaTime);
 }
 
 void Engine::Render()
 {
-    SDL_SetRenderDrawColor(m_renderer, 124, 218, 254, 255);
     SDL_RenderClear(m_renderer);
 
     //TextureManager::GetInstance()->Draw("logo1", 0, 0, 110, 100, SDL_FLIP_NONE);
 
-    m_levelMap->Render();
-    player->Draw();
-
+    //m_levelMap->Render();
     for(auto states : m_states)
     {
         states->Render();
@@ -156,6 +145,7 @@ bool Engine::Clean()
     SDL_DestroyRenderer(m_renderer);
     IMG_Quit();
     SDL_Quit();
+    Quit();
 }
 
 void Engine::Quit()
