@@ -73,7 +73,7 @@ bool Engine::Init(const char* title, int width, int height)
 
 void Engine::Update()
 {
-    m_levelMap->Update();
+    //m_levelMap->Update();
 
     for(auto states : m_states)
     {
@@ -93,6 +93,7 @@ void Engine::Update()
 
 void Engine::Render()
 {
+    SDL_SetRenderDrawColor(m_renderer, 124, 218, 254, 255);
     SDL_RenderClear(m_renderer);
 
     //TextureManager::GetInstance()->Draw("logo1", 0, 0, 110, 100, SDL_FLIP_NONE);
