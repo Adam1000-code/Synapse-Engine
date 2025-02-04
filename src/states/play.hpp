@@ -1,8 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <SDL2/SDL.h>
 #include "gamestate.hpp"
 #include "../map/gamemap.hpp"
+#include "../map/mapparser.hpp"
 #include "../factory/objectcreator.hpp"
 #include "../object/gameobject.hpp"
 #include "../input/input.hpp"
@@ -34,4 +36,5 @@ class Play : public GameState
         bool editMode;
         GameMap* gameMap;
         vector<GameObject*> gameObjects;
+        SDL_Renderer* m_ctxt;
 };
