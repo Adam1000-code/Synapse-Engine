@@ -11,7 +11,7 @@ using namespace std;
 class MapParser
 {
     public:
-        bool Load();
+        bool Load(string path, string id);
         void Clean(); 
 
         inline GameMap* GetMap(string id)

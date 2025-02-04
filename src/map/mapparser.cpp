@@ -6,9 +6,9 @@ using namespace std;
 
 MapParser* MapParser::s_instance = nullptr;
 
-bool MapParser::Load()
+bool MapParser::Load(string path, string id)
 {
-    if(!Parse("level1", "assets/engineMap.tmx"))
+    if(!Parse(id, path))
     {
         return false;
     }
