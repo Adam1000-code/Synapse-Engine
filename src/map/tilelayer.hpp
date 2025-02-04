@@ -28,6 +28,10 @@ class TileLayer : public Layer
         {
             return m_tilemap;
         }
+        inline int GetTileSize()
+        {
+            return m_tileSize;
+        }
     
     private:
         int m_tileSize;
