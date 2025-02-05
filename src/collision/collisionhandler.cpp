@@ -5,6 +5,7 @@ CollisionHandler* CollisionHandler::instance = nullptr;
 
 CollisionHandler::CollisionHandler()
 {
+    //GameMap* map;
     collisionLayer = (TileLayer*)Engine::GetInstance()->GetMap()->GetMapLayers().front();
     collisionTileMap = collisionLayer->GetTileMap();
 }

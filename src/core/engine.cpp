@@ -18,6 +18,7 @@
 using namespace std;
 
 Engine* Engine::s_instance = nullptr;
+Play* play = new Play();
 
 Engine::Engine()
 {
@@ -44,12 +45,12 @@ bool Engine::Init(const char* title, int width, int height)
         SDL_Log("ERROR: Failed to create renderer: %s", SDL_GetError());
     }
 
-    if(!MapParser::GetInstance()->Load())
+    /*if(!MapParser::GetInstance()->Load("assets/engineMap.tmx", "level1"))
     {
         cout << "ERROR: Failed to load map" << endl;
-    }
+    }*/
     
-    //MapParser::GetInstance()->Load();
+    //MapParser::GetInstance()->Load("assets/engineMap.tmx", "level1");
 
     //m_levelMap = MapParser::GetInstance()->GetMap("level1");
 
@@ -63,9 +64,11 @@ bool Engine::Init(const char* title, int width, int height)
         states->Init();
     }
 
+    m_levelMap = play->GetMap();
+
     //Transform tf;
     //tf.Log();
-
+    ChangeState(new Play());
     PushState(new Play());
 
     return m_isRunning = true;
@@ -73,6 +76,7 @@ bool Engine::Init(const char* title, int width, int height)
 
 void Engine::Update()
 {
+    m_levelMap = play->GetMap();
     //m_levelMap->Update();
 
     for(auto states : m_states)

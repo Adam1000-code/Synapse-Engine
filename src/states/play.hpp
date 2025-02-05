@@ -32,6 +32,11 @@ class Play : public GameState
         virtual void Update();
         virtual void Render();
 
+        inline GameMap* GetMap()
+        {
+            return gameMap;
+        }
+
     private:
         bool editMode;
         GameMap* gameMap;
