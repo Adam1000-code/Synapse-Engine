@@ -45,4 +45,6 @@ $ brew install sdl2_image
 Now that the neccessary packages for the engine are installed, we can now proceed to the next part of the installation.
 
 ### Synapse Tools Introduction
-Synapse Tools is a collection of Python scripts that helps with development with the Synapse Engine.
+Synapse Tools is a collection of Python scripts that helps with development with the Synapse Engine. It gets you setup with a project in a matter of minutes. In this guide, we'll be using it to setup a project and create a game. Click [here](https://github.com/Adam1000-code/Synapse-Tools/releases) to download Synapse Tools.
+
+### Creating your first project
