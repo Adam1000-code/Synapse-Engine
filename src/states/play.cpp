@@ -29,7 +29,7 @@ bool Play::Init()
 
     Camera::GetInstance()->SetTarget(player->GetOrigin());
 
-    gameObjects.push_back(player);
+    //gameObjects.push_back(player);
 
     cout << "play initialized" << endl;
 
@@ -38,6 +38,9 @@ bool Play::Init()
 
 void Play::Update()
 {
+    gameMap = Engine::GetInstance()->GetMap();
+    gameMap = MapParser::GetInstance()->GetMap("level1");
+    
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
 
     cout << "playing game" << endl;
@@ -52,7 +55,7 @@ void Play::Update()
 void Play::Render()
 {
     player->Draw();
-    //gameMap->Render();
+    gameMap->Render();
 }
 
 void Play::Events()

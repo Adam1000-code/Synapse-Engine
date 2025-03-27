@@ -23,14 +23,14 @@ Player::Player(Properties* props) : Character(props)
     //bool loopAnim = true;
 
     m_animation = new SpriteAnimation();
-
-    m_collider = new Collider();
-    m_collider->SetBuffer(-60, -20, 0, 0);
     
     m_animation->SetProperties(m_textureID, 1, 6, 100, m_flip);
 
     m_width = 32;
     m_height = 32;
+
+    m_collider = new Collider();
+    m_collider->SetBuffer(-60, -20, 0, 0);
 }
 
 void Player::Draw()
@@ -90,7 +90,7 @@ void Player::Update(float deltaTime)
     {
         m_transform->X = lastSafePos.X;
     }
-
+    
     // move on y axis
     lastSafePos.Y = m_transform->Y;
     m_transform->Y += m_rigidbody->Position().Y;
