@@ -5,6 +5,12 @@ CollisionHandler* CollisionHandler::instance = nullptr;
 
 CollisionHandler::CollisionHandler()
 {
+    if(!Engine::GetInstance()->GetMap())
+    {
+        cerr << "Map is nullptr!" << endl;
+        return;
+    }
+
     collisionLayer = (TileLayer*)Engine::GetInstance()->GetMap()->GetMapLayers().back();
     collisionTileMap = collisionLayer->GetTileMap();
 }
