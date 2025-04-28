@@ -18,18 +18,17 @@ bool Play::Init()
         cout << "ERROR: Failed to load map" << endl;
     }
 
-    //MapParser::GetInstance()->Load("assets/engineMap.tmx", "level1");
-    gameMap = Engine::GetInstance()->GetMap();
+    
     gameMap = MapParser::GetInstance()->GetMap("level1");
 
-    //TileLayer* collisionLayer = (TileLayer*) gameMap->GetMapLayers().back();
-    //int tileSize = collisionLayer->GetTileSize();
+    TileLayer* collisionLayer = (TileLayer*)gameMap->GetMapLayers().back();
+    CollisionHandler::GetInstance()->SetLayer(collisionLayer);
 
     player = new Player(new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
 
     Camera::GetInstance()->SetTarget(player->GetOrigin());
 
-    //gameObjects.push_back(player);
+    gameObjects.push_back(player);
 
     cout << "play initialized" << endl;
 
@@ -38,9 +37,6 @@ bool Play::Init()
 
 void Play::Update()
 {
-    gameMap = Engine::GetInstance()->GetMap();
-    gameMap = MapParser::GetInstance()->GetMap("level1");
-    
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
 
     cout << "playing game" << endl;

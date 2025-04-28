@@ -64,8 +64,6 @@ bool Engine::Init(const char* title, int width, int height)
         states->Init();
     }
 
-    m_levelMap = play->GetMap();
-
     //Transform tf;
     //tf.Log();
     ChangeState(new Play());
