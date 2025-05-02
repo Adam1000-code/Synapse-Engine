@@ -17,7 +17,6 @@ bool Play::Init()
     {
         cout << "ERROR: Failed to load map" << endl;
     }
-
     
     gameMap = MapParser::GetInstance()->GetMap("level1");
 
@@ -39,7 +38,7 @@ void Play::Update()
 {
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
 
-    cout << "playing game" << endl;
+    //cout << "playing game" << endl;
 
     player->Update(deltaTime);
     gameMap->Update();
