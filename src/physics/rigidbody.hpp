@@ -75,8 +75,8 @@ class RigidBody
         {
             m_acceleration.X = (m_force.X + m_friction.X) / m_mass;
             m_acceleration.Y = m_gravity + m_force.Y / m_mass;
-            m_velocity = m_acceleration * deltaTime;
-            m_position = m_velocity * deltaTime;
+            m_velocity += m_acceleration * deltaTime;
+            m_position += m_velocity * deltaTime;
         }
 
     

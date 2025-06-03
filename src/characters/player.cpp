@@ -85,7 +85,6 @@ void Player::Update(float deltaTime)
 
     // move on x axis
     lastSafePos.X = m_transform->X;
-    m_transform->X += m_rigidbody->Position().X;
     m_collider->Set(m_transform->X, m_transform->Y, 96, 96);
 
     if(CollisionHandler::GetInstance()->MapCollision(m_collider->Get()))
@@ -95,7 +94,6 @@ void Player::Update(float deltaTime)
     
     // move on y axis
     lastSafePos.Y = m_transform->Y;
-    m_transform->Y += m_rigidbody->Position().Y;
     m_collider->Set(m_transform->X, m_transform->Y, 96, 96);
 
     if(CollisionHandler::GetInstance()->MapCollision(m_collider->Get()))
@@ -121,6 +119,9 @@ void Player::Update(float deltaTime)
     m_origin->Y = m_transform->Y + m_height / 2;
 
     m_animation->Update(deltaTime);
+    
+    m_transform->X += m_rigidbody->Position().X;
+    m_transform->Y += m_rigidbody->Position().Y;
 }
 
 void Player::Clean()

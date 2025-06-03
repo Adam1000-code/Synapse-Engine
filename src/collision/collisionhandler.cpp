@@ -31,9 +31,9 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
         leftTile = 0;
     }
 
-    if(rightTile > colCount)
+    if(rightTile >= colCount)
     {
-        rightTile = colCount;
+        rightTile = colCount - 1;
     }
 
     if(topTile < 0)
@@ -41,9 +41,9 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
         topTile = 0;
     }
 
-    if(bottomTile > rowCount)
+    if(bottomTile >= rowCount)
     {
-        bottomTile = rowCount;
+        bottomTile = rowCount - 1;
     }
 
     for(int i = leftTile; i <= rightTile; i++)
