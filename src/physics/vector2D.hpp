@@ -39,6 +39,14 @@ class Vector2D
             return Vector2D(v2.X - v1.X, v2.Y - v1.Y);
         }
 
+        // addition assignment
+        inline Vector2D& operator+=(const Vector2D& v2)
+        {
+            X += v2.X;
+            Y += v2.Y;
+            return *this;
+        }
+
         void Log(string msg)
         {
             cout << msg << "(X Y) = (" << X << " " << Y << ")" << endl;
