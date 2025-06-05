@@ -81,8 +81,6 @@ void Player::Update(float deltaTime)
         jumpTime = JUMP_TIME;
     }
 
-    m_rigidbody->Update(deltaTime);
-
     // move on x axis
     lastSafePos.X = m_transform->X;
     m_collider->Set(m_transform->X, m_transform->Y, 96, 96);
@@ -120,8 +118,10 @@ void Player::Update(float deltaTime)
 
     m_animation->Update(deltaTime);
     
-    m_transform->X += m_rigidbody->Position().X;
-    m_transform->Y += m_rigidbody->Position().Y;
+    m_transform->X = m_rigidbody->Position().X;
+    m_transform->Y = m_rigidbody->Position().Y;
+
+    m_rigidbody->Update(deltaTime);
 }
 
 void Player::Clean()
