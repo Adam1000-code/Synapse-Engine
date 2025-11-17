@@ -27,7 +27,7 @@ bool Play::Init()
 
     Camera::GetInstance()->SetTarget(player->GetOrigin());
 
-    gameObjects.push_back(player);
+    //gameObjects.push_back(player);
 
     cout << "play initialized" << endl;
 
@@ -37,6 +37,9 @@ bool Play::Init()
 void Play::Update()
 {
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
+
+    TileLayer* collisionLayer = (TileLayer*)gameMap->GetMapLayers().back();
+    CollisionHandler::GetInstance()->SetLayer(collisionLayer);
 
     //cout << "playing game" << endl;
 

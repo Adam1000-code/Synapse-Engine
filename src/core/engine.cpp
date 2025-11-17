@@ -59,15 +59,17 @@ bool Engine::Init(const char* title, int width, int height)
     //TextureManager::GetInstance()->Load("player_run", "assets/Run (32x32).png");
     //TextureManager::GetInstance()->Load("player_jump", "assets/Jump (32x32).png");
 
-    for(auto states : m_states)
+    /*for(auto states : m_states)
     {
         states->Init();
-    }
+    }*/
+
+    play->Init();
 
     //Transform tf;
     //tf.Log();
-    ChangeState(new Play());
-    PushState(new Play());
+    //ChangeState(new Play());
+    //PushState(new Play());
 
     return m_isRunning = true;
 }
@@ -77,10 +79,12 @@ void Engine::Update()
     m_levelMap = play->GetMap();
     //m_levelMap->Update();
 
-    for(auto states : m_states)
+    play->Update();
+
+    /*for(auto states : m_states)
     {
         states->Update();
-    }
+    }*/
 
     /*for(auto charact : m_characters)
     {
@@ -101,10 +105,12 @@ void Engine::Render()
     //TextureManager::GetInstance()->Draw("logo1", 0, 0, 110, 100, SDL_FLIP_NONE);
 
     //m_levelMap->Render();
-    for(auto states : m_states)
+    /*for(auto states : m_states)
     {
         states->Render();
-    }
+    }*/
+
+    play->Render();
 
     /*for(auto charact : m_characters)
     {
@@ -116,10 +122,10 @@ void Engine::Render()
         gameobj->Draw();
     }*/
 
-    if(!m_states.empty())
+    /*if(!m_states.empty())
     {
         m_states.back()->Render();
-    }
+    }*/
 
     SDL_RenderPresent(m_renderer);
 }
