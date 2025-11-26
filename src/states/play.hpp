@@ -32,13 +32,13 @@ class Play : public GameState
         virtual void Update();
         virtual void Render();
 
-        inline GameMap* GetMap()
+        /*inline GameMap* GetMap()
         {
             return gameMap;
-        }
+        }*/
 
     private:
-        bool editMode;
+        //bool editMode;
         GameMap* gameMap;
         vector<GameObject*> gameObjects;
         SDL_Renderer* m_ctxt;

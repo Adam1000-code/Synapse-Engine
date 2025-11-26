@@ -28,14 +28,6 @@ class RigidBody
         {
             m_gravity = gravity;
         }
-        /*inline void SetVelocity(Vector2D v)
-        {
-            m_velocity = v;
-        }
-        inline void SetVelocityY(float vy)
-        {
-            m_velocity.Y = vy;
-        }*/
 
         void ApplyForce(Vector2D f)
         {
@@ -69,7 +61,6 @@ class RigidBody
         inline Vector2D Position()
         {
             return m_position;
-            //return m_velocity * m_lastDeltaTime;
         }
         inline Vector2D Velocity()
         {
@@ -84,25 +75,14 @@ class RigidBody
         {
             m_acceleration.X = (m_force.X + m_friction.X) / m_mass;
             m_acceleration.Y = m_gravity + m_force.Y / m_mass;
-            m_velocity += m_acceleration * deltaTime;
+            m_velocity = m_acceleration * deltaTime;
             m_position = m_velocity * deltaTime;
-            //m_lastDeltaTime = deltaTime;
-
-            //m_acceleration.X = (m_force.X + m_friction.X) / m_mass;
-            //m_acceleration.Y = m_gravity; // Only gravity as acceleration
-
-            //m_velocity += m_acceleration * deltaTime;
-            //m_position = m_velocity * deltaTime;
-
-            //m_force = Vector2D(0, 0);
-            //m_friction = Vector2D(0, 0);
         }
 
     
     private:
         float m_mass;
         float m_gravity;
-        //float m_lastDeltaTime = 0.0f;
 
         Vector2D m_force;
         Vector2D m_friction;

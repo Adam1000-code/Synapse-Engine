@@ -29,9 +29,9 @@ class Engine
         void Events();
         void Quit();
 
-        void PopState();
+        /*void PopState();
         void PushState(GameState* current);
-        void ChangeState(GameState* target);
+        void ChangeState(GameState* target);*/
 
         inline bool isRunning()
         {
@@ -52,7 +52,7 @@ class Engine
         SDL_Window* m_window;
         SDL_Renderer* m_renderer;
         static Engine* s_instance;
-        vector<GameState*> m_states;
+        //vector<GameState*> m_states;
         //vector<GameObject*> m_objects;
         //vector<Character*> m_characters;
 };

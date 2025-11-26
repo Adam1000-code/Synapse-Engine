@@ -5,6 +5,8 @@ CollisionHandler* CollisionHandler::instance = nullptr;
 
 CollisionHandler::CollisionHandler()
 {
+    collisionLayer = (TileLayer*)Engine::GetInstance()->GetMap()->GetMapLayers().front();
+    collisionTileMap = collisionLayer->GetTileMap();
 }
 
 bool CollisionHandler::CheckCollision(SDL_Rect a, SDL_Rect b)

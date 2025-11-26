@@ -18,7 +18,8 @@
 using namespace std;
 
 Engine* Engine::s_instance = nullptr;
-Play* play = new Play();
+//Play* play = new Play();
+Player* player = nullptr;
 
 Engine::Engine()
 {
@@ -45,41 +46,56 @@ bool Engine::Init(const char* title, int width, int height)
         SDL_Log("ERROR: Failed to create renderer: %s", SDL_GetError());
     }
 
-    /*if(!MapParser::GetInstance()->Load("assets/engineMap.tmx", "level1"))
+    // everything past here is stuff for the game, not the engine itself.
+
+    TextureManager::GetInstance()->ParseTextures("assets/textures.xml");
+
+    if(!MapParser::GetInstance()->Load("assets/engineMap.tmx", "level1"))
     {
         cout << "ERROR: Failed to load map" << endl;
-    }*/
+    }
     
     //MapParser::GetInstance()->Load("assets/engineMap.tmx", "level1");
 
-    //m_levelMap = MapParser::GetInstance()->GetMap("level1");
+    m_levelMap = MapParser::GetInstance()->GetMap("level1");
+
+    //TileLayer* collisionLayer = (TileLayer*)m_levelMap->GetMapLayers().back();
+    //CollisionHandler::GetInstance()->SetLayer(collisionLayer);
 
     //TextureManager::GetInstance()->Load("logo1", "assets/synapselogo1.png");
     //TextureManager::GetInstance()->Load("player", "assets/Idle (32x32).png");
     //TextureManager::GetInstance()->Load("player_run", "assets/Run (32x32).png");
     //TextureManager::GetInstance()->Load("player_jump", "assets/Jump (32x32).png");
 
+    player = new Player(new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
+
     /*for(auto states : m_states)
     {
         states->Init();
     }*/
 
-    play->Init();
+    //play->Init();
 
-    //Transform tf;
-    //tf.Log();
+    Transform tf;
+    tf.Log();
     //ChangeState(new Play());
     //PushState(new Play());
+
+    Camera::GetInstance()->SetTarget(player->GetOrigin());
 
     return m_isRunning = true;
 }
 
 void Engine::Update()
 {
-    m_levelMap = play->GetMap();
-    //m_levelMap->Update();
+    float deltaTime = Timer::GetInstance()->GetDeltaTime();
+    //m_levelMap = play->GetMap();
+    m_levelMap->Update();
 
-    play->Update();
+    //TileLayer* collisionLayer = (TileLayer*)m_levelMap->GetMapLayers().back();
+    //CollisionHandler::GetInstance()->SetLayer(collisionLayer);
+
+    //play->Update();
 
     /*for(auto states : m_states)
     {
@@ -95,6 +111,9 @@ void Engine::Update()
     {
         gameobj->Update(deltaTime);
     }*/
+
+    player->Update(deltaTime);
+    Camera::GetInstance()->Update(deltaTime);
 }
 
 void Engine::Render()
@@ -104,13 +123,14 @@ void Engine::Render()
 
     //TextureManager::GetInstance()->Draw("logo1", 0, 0, 110, 100, SDL_FLIP_NONE);
 
-    //m_levelMap->Render();
+    m_levelMap->Render();
+    player->Draw();
     /*for(auto states : m_states)
     {
         states->Render();
     }*/
 
-    play->Render();
+    //play->Render();
 
     /*for(auto charact : m_characters)
     {
@@ -137,18 +157,20 @@ void Engine::Events()
 
 bool Engine::Clean()
 {
-    while(!m_states.empty())
+    player->Clean();
+    /*while(!m_states.empty())
     {
         PopState();
     }
     for(auto states : m_states)
     {
         states->Exit();
-    }
+    }*/
     /*for(auto gameobj : m_objects)
     {
         gameobj->Clean();
     }*/
+
     TextureManager::GetInstance()->Clean();
     MapParser::GetInstance()->Clean();
     SDL_DestroyRenderer(m_renderer);
@@ -159,14 +181,14 @@ bool Engine::Clean()
 
 void Engine::Quit()
 {
-    for(auto states : m_states)
+    /*for(auto states : m_states)
     {
         states->Exit();
-    }
+    }*/
     m_isRunning = false;
 }
 
-void Engine::PopState()
+/*void Engine::PopState()
 {
     if(!m_states.empty())
     {
@@ -193,4 +215,4 @@ void Engine::ChangeState(GameState *target)
 
     m_states.push_back(target);
     m_states.back()->Init();
-}
+}*/
