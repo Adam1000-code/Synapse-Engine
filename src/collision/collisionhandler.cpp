@@ -62,7 +62,7 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     return false;
 }
 
-void CollisionHandler::SetLayer(TileLayer* layer)
+/*void CollisionHandler::SetLayer(TileLayer* layer)
 {
     if(layer)
     {
@@ -73,4 +73,4 @@ void CollisionHandler::SetLayer(TileLayer* layer)
     {
         cout << "ERROR: Collision layer is null!" << endl;
     }
-}
+}*/

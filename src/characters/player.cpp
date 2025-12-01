@@ -17,9 +17,6 @@ Player::Player(Properties* props) : Character(props)
     jumpForce = JUMP_FORCE;
     jumpTime = JUMP_TIME;
 
-    m_collider = new Collider();
-    m_collider->SetBuffer(-60, -20, 0, 0);
-
     m_rigidbody = new RigidBody();
     m_rigidbody->SetGravity(3.0f);
 
@@ -30,6 +27,9 @@ Player::Player(Properties* props) : Character(props)
 
     m_width = 32;
     m_height = 32;
+
+    m_collider = new Collider();
+    m_collider->SetBuffer(-60, -20, 0, 0);
 }
 
 void Player::Draw()
@@ -46,7 +46,6 @@ void Player::Draw()
 void Player::Update(float deltaTime)
 {
     m_rigidbody->EraseForce();
-
     //m_rigidbody->Update(deltaTime);
 
     m_animation->SetProperties("playerIdle", 1, 6, 100, m_flip);
@@ -118,13 +117,9 @@ void Player::Update(float deltaTime)
 
     m_origin->X = m_transform->X + m_width / 2;
     m_origin->Y = m_transform->Y + m_height / 2;
-
-    m_animation->Update(deltaTime);
     
-    m_transform->X = m_rigidbody->Position().X;
-    m_transform->Y = m_rigidbody->Position().Y;
-
     m_rigidbody->Update(deltaTime);
+    m_animation->Update(deltaTime);
 }
 
 void Player::Clean()

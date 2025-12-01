@@ -27,6 +27,7 @@ Engine::Engine()
 
 bool Engine::Init(const char* title, int width, int height)
 {
+    #pragma region SDL Initialization
     if(SDL_Init(SDL_INIT_VIDEO) != 0 && IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) != 0)
     {
         SDL_Log("ERROR: Failed to initialize SDL: %s", SDL_GetError());
@@ -45,6 +46,8 @@ bool Engine::Init(const char* title, int width, int height)
     {
         SDL_Log("ERROR: Failed to create renderer: %s", SDL_GetError());
     }
+
+    #pragma endregion
 
     // everything past here is stuff for the game, not the engine itself.
 
