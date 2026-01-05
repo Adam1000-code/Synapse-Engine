@@ -10,6 +10,9 @@
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
 
+#define PSP_SCREEN_WIDTH 480
+#define PSP_SCREEN_HEIGHT 272
+
 class Engine
 {
     public:
