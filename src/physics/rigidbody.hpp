@@ -66,6 +66,10 @@ class RigidBody
         {
             return m_velocity;
         }
+        inline void SetVelocityY(float vy)
+        {
+            m_velocity.Y = vy;
+        }
         inline Vector2D Acceleration()
         {
             return m_acceleration;
