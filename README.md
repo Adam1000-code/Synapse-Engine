@@ -38,8 +38,12 @@ Cheers! -Adam
 I've added quite a few things as of now. Textures are now to be parsed from xml files for easier access and organization. Animation has been reworked. There's the basic spritesheet animation and then there's the new sequence animation. It hasn't been tested yet, so if anyone is using the engine, please give it a shot and let me know how it works. As of now I'm working on the game object generator for easier game object creation and usability. That's all. Good luck with your synapse projects!
 Cheers! -Adam
 
-### 1/16/25 **NEW**
+### 1/16/25
 Decided to step away from this project for a bit. Today I decided I was going to finally code and fix the engine's state functions. As of now, I'm happy to say that the game states are finally implemented. I'll now begin work on the camera component for the engine. Happy late new year!!
+Cheers! -Adam
+
+### 1/29/26 **NEW**
+Holy shit it's been a while since I made an announcement. But the engine has slowly been progressing. I haven't worked on it much due to other projects that needed my demand; it's been just a few commits here and there. However I will say that I'm finishing what's needed for game states and that will lead to me beginning the editor application. That's all for now.
 Cheers! -Adam
 
 ## Recent Updates

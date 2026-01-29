@@ -2,8 +2,8 @@
 #include "../characters/player.hpp"
 #include "../factory/objectcreator.hpp"
 
-//Player* player = nullptr;
-GameObject* oPlayer;
+Player* player = nullptr;
+//GameObject* oPlayer;
 
 Play::Play()
 {
@@ -22,16 +22,16 @@ bool Play::Init()
     
     gameMap = MapParser::GetInstance()->GetMap("level1");
 
-    //TileLayer* collisionLayer = (TileLayer*)gameMap->GetMapLayers().back();
-    //CollisionHandler::GetInstance()->SetLayer(collisionLayer);
+    TileLayer* collisionLayer = (TileLayer*)gameMap->GetMapLayers().front(); // was set to back() and caused errors, must be front()
+    CollisionHandler::GetInstance()->SetLayer(collisionLayer);
 
-    //player = new Player(new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
+    player = new Player(new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
     
-    oPlayer = ObjectCreator::GetInstance()->CreateObject("Player", new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
+    //oPlayer = ObjectCreator::GetInstance()->CreateObject("Player", new Properties("player", 100, 200, 136, 96, SDL_FLIP_NONE));
 
-    Camera::GetInstance()->SetTarget(oPlayer->GetOrigin());
+    Camera::GetInstance()->SetTarget(player->GetOrigin());
 
-    gameObjects.push_back(oPlayer);
+    //gameObjects.push_back(oPlayer);
 
     cout << "play initialized" << endl;
 
@@ -42,18 +42,18 @@ void Play::Update()
 {
     float deltaTime = Timer::GetInstance()->GetDeltaTime();
 
-    //TileLayer* collisionLayer = (TileLayer*)gameMap->GetMapLayers().back();
+    //TileLayer* collisionLayer = (TileLayer*)gameMap->GetMapLayers().front(); // was set to back() and caused errors, must be front()
     //CollisionHandler::GetInstance()->SetLayer(collisionLayer);
 
     //cout << "playing game" << endl;
 
-    for(unsigned int i = 0; i != gameObjects.size(); i++)
+    /*for(unsigned int i = 0; i != gameObjects.size(); i++)
     {
         gameObjects[i]->Update(deltaTime);
-    }
+    }*/
 
-    //player->Update(deltaTime);
     //oPlayer->Update(deltaTime);
+    player->Update(deltaTime);
     gameMap->Update();
     Camera::GetInstance()->Update(deltaTime);
 
@@ -62,12 +62,13 @@ void Play::Update()
 
 void Play::Render()
 {
-    for(unsigned int i = 0; i != gameObjects.size(); i++)
+    /*for(unsigned int i = 0; i != gameObjects.size(); i++)
     {
         gameObjects[i]->Draw();
-    }
+    }*/
     //oPlayer->Draw();
     gameMap->Render();
+    player->Draw();
 }
 
 void Play::Events()
@@ -76,11 +77,12 @@ void Play::Events()
 
 bool Play::Exit()
 {
-    for(unsigned int i = 0; i != gameObjects.size(); i++)
+    /*for(unsigned int i = 0; i != gameObjects.size(); i++)
     {
         gameObjects[i]->Clean();
-    }
+    }*/
     //oPlayer->Clean();
+    player->Clean();
     MapParser::GetInstance()->Clean();
     return false;
 }
