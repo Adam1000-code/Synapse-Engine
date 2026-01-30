@@ -96,6 +96,8 @@ void Player::Update(float deltaTime)
     m_transform->Y += m_rigidbody->Position().Y;
     m_collider->Set(m_transform->X, m_transform->Y, 96, 96);
 
+    //m_rigidbody->Update(deltaTime);
+
     if(CollisionHandler::GetInstance()->MapCollision(m_collider->Get()))
     {
         isGrounded = true;
@@ -118,8 +120,8 @@ void Player::Update(float deltaTime)
     m_origin->X = m_transform->X + m_width / 2;
     m_origin->Y = m_transform->Y + m_height / 2;
     
-    m_rigidbody->Update(deltaTime);
     m_animation->Update(deltaTime);
+    m_rigidbody->Update(deltaTime);
 }
 
 void Player::Clean()
