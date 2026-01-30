@@ -5,8 +5,8 @@ CollisionHandler* CollisionHandler::instance = nullptr;
 
 CollisionHandler::CollisionHandler()
 {
-    collisionLayer = (TileLayer*)Engine::GetInstance()->GetMap()->GetMapLayers().front();
-    collisionTileMap = collisionLayer->GetTileMap();
+    //collisionLayer = (TileLayer*)Engine::GetInstance()->GetMap()->GetMapLayers().front();
+    //collisionTileMap = collisionLayer->GetTileMap();
 }
 
 bool CollisionHandler::CheckCollision(SDL_Rect a, SDL_Rect b)
@@ -62,7 +62,7 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     return false;
 }
 
-/*void CollisionHandler::SetLayer(TileLayer* layer)
+void CollisionHandler::SetLayer(TileLayer* layer)
 {
     if(layer)
     {
@@ -73,4 +73,4 @@ bool CollisionHandler::MapCollision(SDL_Rect a)
     {
         cout << "ERROR: Collision layer is null!" << endl;
     }
-}*/
+}
