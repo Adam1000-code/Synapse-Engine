@@ -29,7 +29,7 @@ Player::Player(Properties* props) : Character(props)
     m_height = 32;
 
     m_collider = new Collider();
-    m_collider->SetBuffer(-60, -20, 0, 0);
+    m_collider->SetBuffer(0, 0, 64, 64);
 }
 
 void Player::Draw()
