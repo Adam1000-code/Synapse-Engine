@@ -4,6 +4,11 @@ using namespace std;
 
 Camera* Camera::instance = nullptr;
 
+Camera::Camera()
+{
+    viewPort = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+}
+
 void Camera::Update(float deltaTime)
 {
     if(target != nullptr)
@@ -21,14 +26,14 @@ void Camera::Update(float deltaTime)
             viewPort.y = 0;
         }
 
-        if(viewPort.x > (2 * SCREEN_WIDTH - viewPort.w))
+        if(viewPort.x > (2 * sceneWidth - viewPort.w))
         {
-            viewPort.x = (2 * SCREEN_WIDTH - viewPort.w);
+            viewPort.x = (2 * sceneWidth - viewPort.w);
         }
 
-        if(viewPort.y > (SCREEN_HEIGHT - viewPort.h))
+        if(viewPort.y > (sceneHeight - viewPort.h))
         {
-            viewPort.y = (SCREEN_HEIGHT - viewPort.h);
+            viewPort.y = (sceneHeight - viewPort.h);
         }
 
         position = Vector2D(viewPort.x, viewPort.y);

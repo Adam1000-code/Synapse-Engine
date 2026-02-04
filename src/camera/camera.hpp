@@ -10,9 +10,18 @@ using namespace std;
 class Camera
 {
     public:
-        static Camera* GetInstance()
+        inline static Camera* GetInstance()
         {
             return instance = (instance != nullptr) ? instance : new Camera();
+        }
+
+        inline int GetSceneWidth()
+        {
+            return sceneWidth;
+        }
+        inline int GetSceneHeight()
+        {
+            return sceneHeight;
         }
 
         inline SDL_Rect GetViewPort()
@@ -27,17 +36,29 @@ class Camera
         {
             target = m_target;
         }
+        inline void MoveX(float x)
+        {
+            position.X = x;
+        }
+        inline void MoveY(float y)
+        {
+            position.Y = y;
+        }
+
+        inline void SetSceneLimit(int width, int height)
+        {
+            sceneWidth = width;
+            sceneHeight = height;
+        }
 
         void Update(float deltaTime);
     
     private:
-        Camera()
-        {
-            viewPort = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
-        }
+        Camera();
 
         SDL_Rect viewPort;
         Point* target;
         Vector2D position;
+        int sceneWidth, sceneHeight;
         static Camera* instance;
 };
