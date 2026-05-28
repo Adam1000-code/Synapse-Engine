@@ -7,6 +7,8 @@
 #include "../object/gameobject.hpp"
 #include "../characters/character.hpp"
 
+#define ENGINE_VERSION 1.03
+
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
 
