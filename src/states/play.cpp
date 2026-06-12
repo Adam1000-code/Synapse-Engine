@@ -22,6 +22,8 @@ bool Play::Init()
     
     gameMap = MapParser::GetInstance()->GetMap("level1");
 
+    Camera::GetInstance()->SetSceneLimit(1280, 640);
+
     TileLayer* collisionLayer = (TileLayer*)gameMap->GetMapLayers().front(); // was set to back() and caused errors, must be front()
     CollisionHandler::GetInstance()->SetLayer(collisionLayer);
 
@@ -53,8 +55,10 @@ void Play::Update()
     }*/
 
     //oPlayer->Update(deltaTime);
+
     player->Update(deltaTime);
     gameMap->Update();
+
     Camera::GetInstance()->Update(deltaTime);
 
     //Events();
@@ -69,6 +73,9 @@ void Play::Render()
     //oPlayer->Draw();
     gameMap->Render();
     player->Draw();
+
+    SDL_Rect camView = Camera::GetInstance()->GetViewPort();
+    SDL_RenderCopy(m_ctxt, nullptr, &camView, nullptr);
 }
 
 void Play::Events()
